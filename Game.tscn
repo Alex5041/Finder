@@ -1,0 +1,1678 @@
+[gd_scene load_steps=183 format=2]
+
+[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/fonts/fontBig.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/smallIcons/brokenheart.png" type="Texture" id=4]
+[ext_resource path="res://resources/smallIcons/height.png" type="Texture" id=5]
+[ext_resource path="res://resources/images/gender.png" type="Texture" id=6]
+[ext_resource path="res://resources/smallIcons/location.png" type="Texture" id=7]
+[ext_resource path="res://resources/smallIcons/suitcase.png" type="Texture" id=8]
+[ext_resource path="res://resources/smallIcons/book.png" type="Texture" id=9]
+[ext_resource path="res://resources/smallIcons/weight.png" type="Texture" id=10]
+[ext_resource path="res://resources/redImages/brokenHeartBig.png" type="Texture" id=11]
+[ext_resource path="res://resources/mainButtons/penalty0.png" type="Texture" id=12]
+[ext_resource path="res://resources/mainButtons/report.png" type="Texture" id=13]
+[ext_resource path="res://resources/redImages/reportRed.png" type="Texture" id=14]
+[ext_resource path="res://resources/images/pause.png" type="Texture" id=15]
+[ext_resource path="res://resources/theme.tres" type="Theme" id=16]
+[ext_resource path="res://resources/images/noses.png" type="Texture" id=17]
+[ext_resource path="res://resources/images/mouths.png" type="Texture" id=18]
+[ext_resource path="res://resources/images/hair.png" type="Texture" id=19]
+[ext_resource path="res://resources/images/eyes.png" type="Texture" id=20]
+[ext_resource path="res://resources/images/background.png" type="Texture" id=21]
+[ext_resource path="res://resources/images/glasses.png" type="Texture" id=22]
+[ext_resource path="res://resources/images/bookButton.png" type="Texture" id=23]
+[ext_resource path="res://resources/images/heightButton.png" type="Texture" id=24]
+[ext_resource path="res://resources/images/locationButton.png" type="Texture" id=25]
+[ext_resource path="res://resources/images/interest.png" type="Texture" id=26]
+[ext_resource path="res://resources/images/suitcaseButton.png" type="Texture" id=27]
+[ext_resource path="res://resources/images/faceButton.png" type="Texture" id=28]
+[ext_resource path="res://resources/images/tagButton.png" type="Texture" id=29]
+[ext_resource path="res://resources/images/weightButton.png" type="Texture" id=30]
+[ext_resource path="res://resources/sounds/wrong.wav" type="AudioStream" id=31]
+[ext_resource path="res://resources/sounds/tap.wav" type="AudioStream" id=32]
+[ext_resource path="res://resources/sounds/right2.wav" type="AudioStream" id=33]
+[ext_resource path="res://resources/powerups/keepOldRequests.png" type="Texture" id=34]
+[ext_resource path="res://resources/titleImages/nothing.png" type="Texture" id=35]
+[ext_resource path="res://resources/powerups/lessRequests.png" type="Texture" id=36]
+[ext_resource path="res://resources/powerups/additionalTime.png" type="Texture" id=37]
+[ext_resource path="res://resources/fonts/fontMenu.tres" type="DynamicFont" id=38]
+[ext_resource path="res://resources/titleImages/arcade.png" type="Texture" id=39]
+[ext_resource path="res://resources/sounds/timeisup.wav" type="AudioStream" id=40]
+[ext_resource path="res://resources/redImages/heartBig.png" type="Texture" id=41]
+[ext_resource path="res://resources/face/noses.png" type="Texture" id=42]
+[ext_resource path="res://resources/face/eyes.png" type="Texture" id=43]
+[ext_resource path="res://resources/face/mouths.png" type="Texture" id=44]
+[ext_resource path="res://resources/face/hair.png" type="Texture" id=45]
+[ext_resource path="res://resources/face/glasses.png" type="Texture" id=46]
+[ext_resource path="res://resources/mainButtons/penalty1.png" type="Texture" id=47]
+[ext_resource path="res://resources/mainButtons/request.png" type="Texture" id=48]
+[ext_resource path="res://resources/mainButtons/profile.png" type="Texture" id=49]
+[ext_resource path="res://resources/smallIcons/heart.png" type="Texture" id=50]
+[ext_resource path="res://resources/mainButtons/menu.png" type="Texture" id=51]
+[ext_resource path="res://resources/mainButtons/infobutton.tres" type="SpriteFrames" id=52]
+[ext_resource path="res://resources/face/background.png" type="Texture" id=53]
+[ext_resource path="res://resources/redImages/profileRed.png" type="Texture" id=54]
+[ext_resource path="res://resources/fonts/fontSmall.tres" type="DynamicFont" id=55]
+[ext_resource path="res://resources/redImages/next.png" type="Texture" id=56]
+[ext_resource path="res://resources/redImages/previous.png" type="Texture" id=57]
+[ext_resource path="res://resources/mainButtons/requestsBlue.png" type="Texture" id=58]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 53 )
+region = Rect2( 0, 0, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 53 )
+region = Rect2( 280, 0, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 53 )
+region = Rect2( 0, 232, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 53 )
+region = Rect2( 280, 232, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 21 )
+region = Rect2( 140, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 116, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 21 )
+region = Rect2( 140, 116, 140, 116 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 256, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 384, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 256, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 384, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 0, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 128, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 256, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 43 )
+region = Rect2( 384, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 20 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 20 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 20 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 20 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 20 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 20 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ null, SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 128, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 256, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 384, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 0, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 128, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 256, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 384, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 0, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 128, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 256, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 42 )
+region = Rect2( 384, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 120, 64, 60 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ null, SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 256, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=63]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 384, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 256, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=67]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 384, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=68]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 0, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=69]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 128, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=70]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 256, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=71]
+flags = 4
+atlas = ExtResource( 44 )
+region = Rect2( 384, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=84]
+animations = [ {
+"frames": [ null, SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=85]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 0, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=86]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 200, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=87]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 400, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 600, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 0, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=90]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 200, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=91]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 400, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=92]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 600, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=93]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 0, 240, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 4
+atlas = ExtResource( 45 )
+region = Rect2( 200, 240, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 19 )
+region = Rect2( 100, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 19 )
+region = Rect2( 200, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 19 )
+region = Rect2( 300, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 19 )
+region = Rect2( 100, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 19 )
+region = Rect2( 200, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 19 )
+region = Rect2( 300, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 120, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 19 )
+region = Rect2( 100, 120, 100, 60 )
+
+[sub_resource type="SpriteFrames" id=105]
+animations = [ {
+"frames": [ null, SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=106]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=107]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=108]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=109]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=114]
+animations = [ {
+"frames": [ SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AnimatedTexture" id=115]
+flags = 4
+frames = 2
+pause = true
+oneshot = true
+fps = 0.0
+frame_0/texture = ExtResource( 12 )
+frame_1/texture = ExtResource( 47 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="StyleBoxFlat" id=116]
+bg_color = Color( 0.905882, 0.67451, 0.690196, 1 )
+border_width_left = 16
+border_width_right = 16
+border_color = Color( 0.905882, 0.67451, 0.690196, 1 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 62, 62 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 6 )
+region = Rect2( 62, 0, 62, 62 )
+
+[sub_resource type="SpriteFrames" id=119]
+animations = [ {
+"frames": [ SubResource( 117 ) ],
+"loop": false,
+"name": "male",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 118 ) ],
+"loop": false,
+"name": "female",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=120]
+bg_color = Color( 0.843137, 0.85098, 0.74902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=121]
+bg_color = Color( 0.843137, 0.85098, 0.74902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=122]
+bg_color = Color( 0.843137, 0.85098, 0.74902, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=123]
+
+[sub_resource type="StyleBoxFlat" id=124]
+bg_color = Color( 0.952941, 0.956863, 0.878431, 0.552941 )
+border_width_bottom = 10
+border_color = Color( 0.584314, 0.560784, 0.639216, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="VC" type="VBoxContainer" parent="."]
+margin_right = 451.0
+margin_bottom = 739.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" type="VBoxContainer" parent="VC"]
+visible = false
+margin_right = 451.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 16 )
+custom_constants/separation = 6
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FaceButtons" type="HBoxContainer" parent="VC/Profile"]
+margin_top = 5.0
+margin_right = 451.0
+margin_bottom = 5.0
+
+[node name="Face" type="Node2D" parent="VC/Profile/FaceButtons"]
+position = Vector2( 72, -280 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+frames = SubResource( 9 )
+
+[node name="Eyes" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+position = Vector2( 89.8917, 67.4238 )
+z_index = 1
+frames = SubResource( 34 )
+
+[node name="Nose" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+position = Vector2( 92.3934, 86.9018 )
+z_index = 1
+frames = SubResource( 59 )
+
+[node name="Mouth" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+position = Vector2( 95.9672, 101.361 )
+z_index = 1
+frames = SubResource( 84 )
+
+[node name="Hair" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+position = Vector2( 96.799, 69.6622 )
+z_index = 1
+frames = SubResource( 105 )
+
+[node name="Glasses" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+position = Vector2( 87.2916, 72.5843 )
+z_index = 2
+frames = SubResource( 114 )
+
+[node name="CC" type="CenterContainer" parent="VC/Profile/FaceButtons"]
+visible = false
+margin_right = 451.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GC" type="GridContainer" parent="VC/Profile/FaceButtons/CC"]
+margin_left = 75.0
+margin_top = 86.0
+margin_right = 375.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="Face" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 28 )
+flat = true
+
+[node name="Suitcase" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 27 )
+flat = true
+
+[node name="Book" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 152.0
+margin_right = 224.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 23 )
+flat = true
+
+[node name="Location" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 228.0
+margin_right = 300.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 25 )
+flat = true
+
+[node name="Tag" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_top = 66.0
+margin_right = 72.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 29 )
+flat = true
+
+[node name="Heart" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 76.0
+margin_top = 66.0
+margin_right = 148.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 26 )
+flat = true
+
+[node name="Height" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 152.0
+margin_top = 66.0
+margin_right = 224.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 24 )
+flat = true
+
+[node name="Weight" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+margin_left = 228.0
+margin_top = 66.0
+margin_right = 300.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 30 )
+flat = true
+
+[node name="Buttons" type="VBoxContainer" parent="VC/Profile/FaceButtons"]
+visible = false
+margin_right = 72.0
+margin_bottom = 182.0
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Penalty" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = SubResource( 115 )
+flat = true
+
+[node name="Request" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
+margin_top = 60.0
+margin_right = 72.0
+margin_bottom = 122.0
+action_mode = 0
+icon = ExtResource( 48 )
+flat = true
+
+[node name="Report" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
+margin_top = 120.0
+margin_right = 72.0
+margin_bottom = 182.0
+action_mode = 0
+icon = ExtResource( 13 )
+flat = true
+
+[node name="InfoPanel" type="PanelContainer" parent="VC/Profile"]
+visible = false
+margin_top = 6.0
+margin_right = 451.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 116 )
+
+[node name="HBC" type="HBoxContainer" parent="VC/Profile/InfoPanel"]
+margin_left = 16.0
+margin_right = 435.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="ErrorText" type="Label" parent="VC/Profile/InfoPanel/HBC"]
+margin_right = 229.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Name, age"
+autowrap = true
+
+[node name="C" type="Control" parent="VC/Profile/InfoPanel/HBC"]
+visible = false
+margin_left = 376.0
+margin_right = 446.0
+margin_bottom = 514.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Profile/InfoPanel/HBC/C"]
+visible = false
+position = Vector2( -4, 0 )
+frames = SubResource( 119 )
+animation = "male"
+centered = false
+offset = Vector2( 0, 4 )
+
+[node name="Number" type="Label" parent="VC/Profile/InfoPanel/HBC"]
+margin_left = 233.0
+margin_right = 419.0
+margin_bottom = 44.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Name, age"
+align = 2
+
+[node name="NameAgeGender" type="PanelContainer" parent="VC/Profile"]
+margin_top = 11.0
+margin_right = 451.0
+margin_bottom = 81.0
+
+[node name="HBC" type="HBoxContainer" parent="VC/Profile/NameAgeGender"]
+margin_right = 451.0
+margin_bottom = 70.0
+
+[node name="NameAge" type="Label" parent="VC/Profile/NameAgeGender/HBC"]
+margin_right = 377.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Name, age"
+valign = 1
+autowrap = true
+
+[node name="C" type="Control" parent="VC/Profile/NameAgeGender/HBC"]
+margin_left = 381.0
+margin_right = 451.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Profile/NameAgeGender/HBC/C"]
+visible = false
+position = Vector2( -4, 0 )
+frames = SubResource( 119 )
+animation = "male"
+centered = false
+offset = Vector2( 0, 4 )
+
+[node name="Interests" type="PanelContainer" parent="VC/Profile"]
+margin_top = 87.0
+margin_right = 451.0
+margin_bottom = 191.0
+
+[node name="Interests" type="VBoxContainer" parent="VC/Profile/Interests"]
+margin_right = 451.0
+margin_bottom = 104.0
+custom_constants/separation = 4
+
+[node name="Job" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+margin_right = 451.0
+margin_bottom = 32.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Job"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Job/C"]
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Job" type="Label" parent="VC/Profile/Interests/Interests/Job"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Profession, Company"
+valign = 2
+autowrap = true
+
+[node name="Education" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+margin_top = 36.0
+margin_right = 451.0
+margin_bottom = 68.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Education"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Education/C"]
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Education" type="Label" parent="VC/Profile/Interests/Interests/Education"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Study"
+valign = 2
+autowrap = true
+
+[node name="Distance" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+margin_top = 72.0
+margin_right = 451.0
+margin_bottom = 104.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Distance"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Distance/C"]
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Distance" type="Label" parent="VC/Profile/Interests/Interests/Distance"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Distance"
+valign = 2
+autowrap = true
+
+[node name="Likes" type="PanelContainer" parent="VC/Profile"]
+margin_top = 197.0
+margin_right = 451.0
+margin_bottom = 229.0
+
+[node name="HC" type="HBoxContainer" parent="VC/Profile/Likes"]
+margin_right = 451.0
+margin_bottom = 32.0
+
+[node name="Control" type="Control" parent="VC/Profile/Likes/HC"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/Likes/HC/Control"]
+texture = ExtResource( 50 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="LikesText" type="Label" parent="VC/Profile/Likes/HC"]
+margin_left = 32.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Likes"
+autowrap = true
+
+[node name="Dislikes" type="PanelContainer" parent="VC/Profile"]
+margin_top = 235.0
+margin_right = 451.0
+margin_bottom = 267.0
+size_flags_stretch_ratio = 0.3
+
+[node name="HC" type="HBoxContainer" parent="VC/Profile/Dislikes"]
+margin_right = 451.0
+margin_bottom = 32.0
+
+[node name="Control" type="Control" parent="VC/Profile/Dislikes/HC"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/Dislikes/HC/Control"]
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="DislikesText" type="Label" parent="VC/Profile/Dislikes/HC"]
+margin_left = 32.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Disikes"
+autowrap = true
+
+[node name="HBC" type="HBoxContainer" parent="VC/Profile"]
+margin_top = 273.0
+margin_right = 451.0
+margin_bottom = 333.0
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 6
+
+[node name="Height" type="PanelContainer" parent="VC/Profile/HBC"]
+margin_right = 222.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Height" type="HBoxContainer" parent="VC/Profile/HBC/Height"]
+margin_right = 222.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="CC" type="CenterContainer" parent="VC/Profile/HBC/Height/Height"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/HBC/Height/Height/CC"]
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( 2, 6 )
+
+[node name="Label" type="Label" parent="VC/Profile/HBC/Height/Height"]
+margin_left = 32.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Height"
+
+[node name="Weight" type="PanelContainer" parent="VC/Profile/HBC"]
+margin_left = 228.0
+margin_right = 451.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Weight" type="HBoxContainer" parent="VC/Profile/HBC/Weight"]
+margin_right = 223.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="CC2" type="CenterContainer" parent="VC/Profile/HBC/Weight/Weight"]
+margin_right = 40.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 40, 0 )
+
+[node name="Sprite" type="Sprite" parent="VC/Profile/HBC/Weight/Weight/CC2"]
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( 8, 6 )
+
+[node name="Label" type="Label" parent="VC/Profile/HBC/Weight/Weight"]
+margin_left = 44.0
+margin_top = 14.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Weight"
+
+[node name="Request" type="HBoxContainer" parent="VC"]
+margin_right = 451.0
+margin_bottom = 671.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SC" type="MarginContainer" parent="VC/Request"]
+margin_right = 451.0
+margin_bottom = 671.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_constants/margin_top = 60
+
+[node name="List" type="VBoxContainer" parent="VC/Request/SC"]
+margin_top = 60.0
+margin_right = 451.0
+margin_bottom = 671.0
+size_flags_horizontal = 3
+custom_constants/separation = 6
+
+[node name="Penalty" type="HBoxContainer" parent="VC"]
+visible = false
+margin_top = 503.0
+margin_right = 451.0
+margin_bottom = 671.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSB" type="ScrollContainer" parent="VC/Penalty"]
+margin_right = 451.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+
+[node name="List" type="VBoxContainer" parent="VC/Penalty/VSB"]
+margin_right = 451.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrades" type="VBoxContainer" parent="VC"]
+visible = false
+margin_top = 332.0
+margin_right = 451.0
+margin_bottom = 764.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HB" type="HBoxContainer" parent="VC/Upgrades"]
+margin_right = 451.0
+margin_bottom = 62.0
+
+[node name="ReturnFromUpgrades" type="Button" parent="VC/Upgrades/HB"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 15 )
+flat = true
+
+[node name="GC" type="GridContainer" parent="VC/Upgrades"]
+margin_top = 66.0
+margin_right = 451.0
+margin_bottom = 358.0
+size_flags_vertical = 3
+columns = 2
+
+[node name="VB" type="VBoxContainer" parent="VC/Upgrades/GC"]
+margin_right = 223.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Upg0" type="Button" parent="VC/Upgrades/GC/VB"]
+margin_right = 223.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+icon = ExtResource( 36 )
+flat = true
+expand_icon = true
+
+[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB"]
+margin_top = 54.0
+margin_right = 223.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Less requests"
+fit_content_height = true
+
+[node name="VB2" type="VBoxContainer" parent="VC/Upgrades/GC"]
+margin_left = 227.0
+margin_right = 450.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Upg1" type="Button" parent="VC/Upgrades/GC/VB2"]
+margin_right = 223.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+icon = ExtResource( 37 )
+flat = true
+expand_icon = true
+
+[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB2"]
+margin_top = 54.0
+margin_right = 223.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Additional time"
+fit_content_height = true
+
+[node name="VB3" type="VBoxContainer" parent="VC/Upgrades/GC"]
+margin_top = 148.0
+margin_right = 223.0
+margin_bottom = 292.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Upg2" type="Button" parent="VC/Upgrades/GC/VB3"]
+margin_right = 223.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+icon = ExtResource( 34 )
+flat = true
+expand_icon = true
+
+[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB3"]
+margin_top = 54.0
+margin_right = 223.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Keep old requests"
+fit_content_height = true
+
+[node name="VB4" type="VBoxContainer" parent="VC/Upgrades/GC"]
+margin_left = 227.0
+margin_top = 148.0
+margin_right = 450.0
+margin_bottom = 292.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpgNothing" type="Button" parent="VC/Upgrades/GC/VB4"]
+margin_right = 223.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+icon = ExtResource( 35 )
+flat = true
+expand_icon = true
+
+[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB4"]
+margin_top = 74.0
+margin_right = 223.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
+custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Nothing"
+fit_content_height = true
+
+[node name="Label" type="Label" parent="VC/Upgrades"]
+margin_top = 362.0
+margin_right = 451.0
+margin_bottom = 432.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+
+[node name="TimeLeft" type="Control" parent="VC"]
+margin_top = 675.0
+margin_right = 451.0
+margin_bottom = 675.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="VC/TimeLeft"]
+position = Vector2( 32.1022, 41.4428 )
+points = PoolVector2Array( -32, -41.5, -32, -41.5 )
+width = 8.0
+default_color = Color( 0.976471, 0.980392, 0.941176, 1 )
+begin_cap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="VC"]
+margin_top = 679.0
+margin_right = 451.0
+margin_bottom = 739.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_horizontal = 3
+theme = ExtResource( 16 )
+custom_constants/separation = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="PanelContainer" parent="VC/Buttons"]
+margin_right = 112.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infoMode" type="Button" parent="VC/Buttons/Info"]
+margin_right = 112.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = SubResource( 120 )
+custom_styles/pressed = SubResource( 120 )
+custom_styles/normal = SubResource( 120 )
+action_mode = 0
+flat = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Buttons/Info/infoMode"]
+frames = ExtResource( 52 )
+
+[node name="Report" type="PanelContainer" parent="VC/Buttons"]
+margin_left = 112.0
+margin_right = 225.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reportMode" type="Button" parent="VC/Buttons/Report"]
+margin_right = 113.0
+margin_bottom = 60.0
+custom_styles/hover = SubResource( 120 )
+custom_styles/pressed = SubResource( 120 )
+custom_styles/normal = SubResource( 120 )
+action_mode = 0
+flat = true
+
+[node name="Sprite" type="Sprite" parent="VC/Buttons/Report/reportMode"]
+texture = ExtResource( 13 )
+
+[node name="Request" type="PanelContainer" parent="VC/Buttons"]
+margin_left = 225.0
+margin_right = 338.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="requestMode" type="Button" parent="VC/Buttons/Request"]
+margin_right = 113.0
+margin_bottom = 60.0
+custom_styles/hover = SubResource( 120 )
+custom_styles/pressed = SubResource( 121 )
+custom_styles/normal = SubResource( 122 )
+action_mode = 0
+flat = true
+
+[node name="Sprite" type="Sprite" parent="VC/Buttons/Request/requestMode"]
+texture = ExtResource( 48 )
+
+[node name="Profile" type="PanelContainer" parent="VC/Buttons"]
+margin_left = 338.0
+margin_right = 451.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="profileMode" type="Button" parent="VC/Buttons/Profile"]
+margin_right = 113.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 120 )
+custom_styles/pressed = SubResource( 120 )
+custom_styles/normal = SubResource( 120 )
+action_mode = 0
+flat = true
+
+[node name="Sprite" type="Sprite" parent="VC/Buttons/Profile/profileMode"]
+texture = ExtResource( 49 )
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 32 )
+
+[node name="TimeIsUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+
+[node name="Wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+pitch_scale = 0.76
+
+[node name="Right" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+
+[node name="RoundOver" type="HBoxContainer" parent="."]
+visible = false
+light_mask = 2
+margin_right = 479.0
+margin_bottom = 851.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CC" type="VBoxContainer" parent="RoundOver"]
+margin_right = 479.0
+margin_bottom = 851.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C" type="CenterContainer" parent="RoundOver/CC"]
+margin_right = 479.0
+margin_bottom = 423.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="HBoxContainer" parent="RoundOver/CC/C"]
+margin_left = 219.0
+margin_top = 191.0
+margin_right = 259.0
+margin_bottom = 231.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Sprite" type="Sprite" parent="RoundOver/CC/C/C"]
+position = Vector2( -48.1813, -6.71173 )
+texture = ExtResource( 39 )
+centered = false
+
+[node name="CC" type="CenterContainer" parent="RoundOver/CC"]
+margin_top = 427.0
+margin_right = 479.0
+margin_bottom = 851.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="RoundOver/CC/CC"]
+margin_left = 87.0
+margin_top = 175.0
+margin_right = 391.0
+margin_bottom = 248.0
+custom_fonts/font = ExtResource( 38 )
+custom_colors/font_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Time's up!"
+align = 1
+valign = 1
+
+[node name="Like" type="Sprite" parent="."]
+position = Vector2( 247.736, 311.152 )
+texture = ExtResource( 41 )
+
+[node name="Report" type="Sprite" parent="."]
+position = Vector2( 247.768, 308.69 )
+texture = ExtResource( 14 )
+
+[node name="Request" type="Sprite" parent="."]
+position = Vector2( 247.768, 308.69 )
+texture = ExtResource( 58 )
+
+[node name="Profile" type="Sprite" parent="."]
+position = Vector2( 245.068, 307.549 )
+texture = ExtResource( 54 )
+
+[node name="Dislike" type="Sprite" parent="."]
+position = Vector2( 246.833, 310.631 )
+texture = ExtResource( 11 )
+
+[node name="Next" type="Sprite" parent="."]
+position = Vector2( 246.833, 310.631 )
+texture = ExtResource( 56 )
+
+[node name="Previous" type="Sprite" parent="."]
+position = Vector2( 246.833, 310.631 )
+texture = ExtResource( 57 )
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Top" type="HBoxContainer" parent="Overlay"]
+margin_right = 62.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToMenu" type="Button" parent="Overlay/Top"]
+margin_right = 62.0
+margin_bottom = 73.0
+custom_styles/focus = SubResource( 123 )
+icon = ExtResource( 51 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Overlay/Top"]
+margin_left = 66.0
+margin_right = 169.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 38 )
+text = "0/0"
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+visible = false
+margin_left = 28.0
+margin_top = 500.0
+margin_right = 455.0
+margin_bottom = 622.0
+custom_styles/panel = SubResource( 124 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelContainer"]
+margin_right = 427.0
+margin_bottom = 112.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/CenterContainer"]
+margin_top = 22.0
+margin_right = 427.0
+margin_bottom = 90.0
+
+[node name="Big" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+margin_right = 427.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "You have 5 s before start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Small" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 427.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 55 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "or press this to start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Face" to="." method="_on_Face_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Suitcase" to="." method="_on_Suitcase_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Book" to="." method="_on_Book_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Location" to="." method="_on_Location_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Tag" to="." method="_on_Tag_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Heart" to="." method="_on_Heart_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Height" to="." method="_on_Height_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Weight" to="." method="_on_Weight_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Penalty" to="." method="_on_Penalty_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Request" to="." method="_on_Request_pressed"]
+[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Report" to="." method="_on_Report_pressed"]
+[connection signal="pressed" from="VC/Upgrades/GC/VB/Upg0" to="." method="_on_Upg0_pressed"]
+[connection signal="pressed" from="VC/Upgrades/GC/VB2/Upg1" to="." method="_on_Upg1_pressed"]
+[connection signal="pressed" from="VC/Upgrades/GC/VB3/Upg2" to="." method="_on_Upg2_pressed"]
+[connection signal="pressed" from="VC/Upgrades/GC/VB4/UpgNothing" to="." method="_on_UpgNothing_pressed"]
+[connection signal="pressed" from="VC/Buttons/Info/infoMode" to="." method="_on_Penalty_pressed"]
+[connection signal="pressed" from="VC/Buttons/Request/requestMode" to="." method="_on_Request_pressed" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Profile/profileMode" to="." method="_on_Return_pressed" binds= [ true ]]
+[connection signal="pressed" from="Overlay/Top/ToMenu" to="." method="_on_Pause_pressed"]
+[connection signal="gui_input" from="Overlay/PanelContainer" to="." method="_on_TimeOutOrGameOver"]
+[connection signal="gui_input" from="Overlay/PanelContainer/CenterContainer" to="." method="_on_TimeOutOrGameOver"]

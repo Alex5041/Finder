@@ -1,0 +1,24 @@
+Profile contains string (s) and numerical (n) values.
+
+		      <Press this 1/4>
+
+Request is a list of demands for a profile to be liked
+First one means that age should be more than 30 AND
+a person should have College education (University and School aren't viable)
+For profile to be liked, it should fit AT LEAST ONE request.
+You can swipe down to quickly switch tab to Profile.
+
+		<Press this to proceed 2/4>
+
+Now try to correctly guess 5 profiles. Swipe right for dislike,
+left for like. When your action will be accepted, an icon in the middle will appear.
+If you make a mistake, profile will appear in info tab with information why your action was incorrect
+
+			<3/4>
+
+ALmost done! There is one thing left. Sometimes a profile will contain invalid field.
+Negative number or a meaningless set of symbols instead of a string value (note: this
+incorrect value will ALWAYS contain one or more of these symbols: [ ] \ ^ _ ` )
+To finish tutorial get next 5 profiles correct.
+
+			<4/4>

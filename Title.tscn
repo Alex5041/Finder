@@ -1,0 +1,1098 @@
+[gd_scene load_steps=108 format=2]
+
+[ext_resource path="res://resources/fonts/fontMenu.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/Title.gd" type="Script" id=2]
+[ext_resource path="res://resources/images/pause.png" type="Texture" id=3]
+[ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/fonts/fontBig.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/theme.tres" type="Theme" id=6]
+[ext_resource path="res://resources/redImages/zen.png" type="Texture" id=7]
+[ext_resource path="res://resources/redImages/arcade.png" type="Texture" id=8]
+[ext_resource path="res://resources/redImages/phi.png" type="Texture" id=9]
+[ext_resource path="res://resources/redImages/heartBig.png" type="Texture" id=10]
+[ext_resource path="res://resources/sounds/tapNew.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/images/gender.png" type="Texture" id=12]
+[ext_resource path="res://resources/images/suitcase.png" type="Texture" id=13]
+[ext_resource path="res://resources/titleImages/nose.png" type="Texture" id=14]
+[ext_resource path="res://resources/titleImages/dice.png" type="Texture" id=15]
+[ext_resource path="res://resources/images/location.png" type="Texture" id=16]
+[ext_resource path="res://resources/images/noses.png" type="Texture" id=17]
+[ext_resource path="res://resources/images/mouths.png" type="Texture" id=18]
+[ext_resource path="res://resources/images/eyes.png" type="Texture" id=19]
+[ext_resource path="res://resources/images/book.png" type="Texture" id=20]
+[ext_resource path="res://resources/images/background.png" type="Texture" id=21]
+[ext_resource path="res://resources/images/glasses.png" type="Texture" id=22]
+[ext_resource path="res://resources/titleImages/mouth.png" type="Texture" id=23]
+[ext_resource path="res://resources/titleImages/hairButton.png" type="Texture" id=24]
+[ext_resource path="res://resources/images/height.png" type="Texture" id=25]
+[ext_resource path="res://resources/images/weight.png" type="Texture" id=26]
+[ext_resource path="res://resources/images/hair.png" type="Texture" id=27]
+[ext_resource path="res://resources/titleImages/eye.png" type="Texture" id=28]
+[ext_resource path="res://resources/sounds/beat1.wav" type="AudioStream" id=29]
+[ext_resource path="res://resources/sounds/beat2.wav" type="AudioStream" id=30]
+[ext_resource path="res://resources/titleImages/tick.png" type="Texture" id=31]
+[ext_resource path="res://resources/mainButtons/menu.png" type="Texture" id=32]
+[ext_resource path="res://resources/face/empty.png" type="Texture" id=33]
+[ext_resource path="res://resources/fonts/fontSmall.tres" type="DynamicFont" id=34]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.843137, 0.85098, 0.74902, 1 )
+
+[sub_resource type="AnimatedTexture" id=2]
+flags = 4
+frames = 2
+pause = true
+frame_0/texture = ExtResource( 10 )
+frame_1/texture = ExtResource( 9 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 21 )
+region = Rect2( 140, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 116, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 21 )
+region = Rect2( 140, 116, 140, 116 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 19 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 19 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 19 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 19 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 19 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 19 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 19 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 19 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 19 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 33 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 120, 64, 60 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ ExtResource( 33 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=53]
+animations = [ {
+"frames": [ ExtResource( 33 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 27 )
+region = Rect2( 100, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 27 )
+region = Rect2( 200, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 27 )
+region = Rect2( 300, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 27 )
+region = Rect2( 100, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 27 )
+region = Rect2( 200, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 27 )
+region = Rect2( 300, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 120, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 27 )
+region = Rect2( 100, 120, 100, 60 )
+
+[sub_resource type="SpriteFrames" id=64]
+animations = [ {
+"frames": [ ExtResource( 33 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=69]
+animations = [ {
+"frames": [ SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=70]
+bg_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 62, 62 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 12 )
+region = Rect2( 62, 0, 62, 62 )
+
+[sub_resource type="SpriteFrames" id=73]
+animations = [ {
+"frames": [ SubResource( 71 ) ],
+"loop": false,
+"name": "male",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 72 ) ],
+"loop": false,
+"name": "female",
+"speed": 5.0
+} ]
+
+[node name="Title" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -122.0
+margin_bottom = -239.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 358.0
+margin_bottom = 615.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 358.0
+margin_bottom = 615.0
+
+[node name="CC" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 358.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="IconHeart" type="Button" parent="MarginContainer/VBoxContainer/CC"]
+margin_left = 143.0
+margin_top = 69.0
+margin_right = 215.0
+margin_bottom = 131.0
+theme = ExtResource( 6 )
+action_mode = 0
+icon = SubResource( 2 )
+flat = true
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 358.0
+margin_bottom = 283.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Start"
+flat = true
+
+[node name="How to play" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 287.0
+margin_right = 358.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+text = "How to play"
+flat = true
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 370.0
+margin_right = 358.0
+margin_bottom = 449.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 453.0
+margin_right = 358.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leave" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 536.0
+margin_right = 358.0
+margin_bottom = 615.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Leave"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="CenterContainer" parent="."]
+visible = false
+margin_right = 465.0
+margin_bottom = 615.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+margin_left = 33.0
+margin_top = 109.0
+margin_right = 431.0
+margin_bottom = 506.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Score" type="RichTextLabel" parent="GameOver/VBoxContainer"]
+margin_right = 398.0
+margin_bottom = 148.0
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_italics_font = ExtResource( 4 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Game Over!
+Score: "
+fit_content_height = true
+scroll_active = false
+
+[node name="Try again" type="Button" parent="GameOver/VBoxContainer"]
+margin_top = 152.0
+margin_right = 398.0
+margin_bottom = 231.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Try again"
+flat = true
+
+[node name="Submit score" type="Button" parent="GameOver/VBoxContainer"]
+margin_top = 235.0
+margin_right = 398.0
+margin_bottom = 314.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Submit score"
+flat = true
+
+[node name="To menu" type="Button" parent="GameOver/VBoxContainer"]
+margin_top = 318.0
+margin_right = 398.0
+margin_bottom = 397.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "To menu"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 480.0
+margin_bottom = 854.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 62.0
+
+[node name="Return" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 3 )
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 480.0
+margin_bottom = 854.0
+size_flags_vertical = 3
+custom_constants/margin_left = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 12.0
+margin_right = 480.0
+margin_bottom = 788.0
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+
+[node name="HowToPlay" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+margin_right = 468.0
+margin_bottom = 1632.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "I apologise sincerely for not creating a good tutorial. I can easily spend 20 more hours on developing a game
+itself, but I am not wasting one more hour on a tutorial.
+
+[b]Premise[/b]
+Premise is that you are scrolling through 'Tinder' and you have to do it FAST. Why? You'll know later. But you are not just looking at profiles and choosing willingly which you like, you have predetermined [color=#7664fe]requests[/color]. They can be found in [img=22.5x21]resources/images/requests.png[/img]. To like a profile - swipe left, to dislike - right. However, there are some catfish. In case there is some strange thing going on like some data missing (no age for instance or negative height), you should press on [img=22.5x21]resources/images/report.png[/img] - and then you will enter report mode. You will be punished for any mistake. And your mistakes are collected here [img=22.5x21]resources/images/penalty0.png[/img]
+
+[b]Report Mode[/b]
+You need to click on a suspicious data and if you are correct with your assumption the next profile will appear. Otherwise you will hear the only sound of this game - irritating beep (press to hear it). It is a n e c e s s i t y to look for broken profiles (I assure you, it's not a bug of a game, it's a feature. I'm a master of random generation).
+
+[b]How to check profile for requests[/b]
+When you open request list you see some things. Each new box is a different request. You need only one request  to be true. Every demand in a request should be true for it whole to be true. The more requests the harder the game.
+"
+text = "I apologise sincerely for not creating a good tutorial. I can easily spend 20 more hours on developing a game
+itself, but I am not wasting one more hour on a tutorial.
+
+Premise
+Premise is that you are scrolling through 'Tinder' and you have to do it FAST. Why? You'll know later. But you are not just looking at profiles and choosing willingly which you like, you have predetermined requests. They can be found in . To like a profile - swipe left, to dislike - right. However, there are some catfish. In case there is some strange thing going on like some data missing (no age for instance or negative height), you should press on  - and then you will enter report mode. You will be punished for any mistake. And your mistakes are collected here 
+
+Report Mode
+You need to click on a suspicious data and if you are correct with your assumption the next profile will appear. Otherwise you will hear the only sound of this game - irritating beep (press to hear it). It is a n e c e s s i t y to look for broken profiles (I assure you, it's not a bug of a game, it's a feature. I'm a master of random generation).
+
+How to check profile for requests
+When you open request list you see some things. Each new box is a different request. You need only one request  to be true. Every demand in a request should be true for it whole to be true. The more requests the harder the game.
+"
+fit_content_height = true
+
+[node name="Credits" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 480.0
+margin_bottom = 854.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits"]
+margin_right = 480.0
+margin_bottom = 62.0
+
+[node name="ReturnFromCredits" type="Button" parent="Credits/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 3 )
+flat = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits"]
+margin_top = 66.0
+margin_right = 480.0
+margin_bottom = 854.0
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+
+[node name="HowToPlay" type="RichTextLabel" parent="Credits/ScrollContainer"]
+margin_right = 480.0
+margin_bottom = 788.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "Made in a week by BlueWaterStop 
+  [img=30x30]resources/images/itch-io.png[/img] [url=https://bluewaterstop.itch.io/]itch.io[/url] 
+  [img=30x30]resources/images/twitter.png[/img] [url=https://twitter.com/BlueWaterStop]twitter[/url]
+
+  Inspired by  [url=https://store.steampowered.com/app/239030/Papers_Please/]Papers, Please[/url]"
+text = "Made in a week by BlueWaterStop 
+   itch.io 
+   twitter
+
+  Inspired by  Papers, Please"
+fit_content_height = true
+
+[node name="Gamemode" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 465.0
+margin_bottom = 628.0
+
+[node name="FromGamemode" type="Button" parent="Gamemode"]
+margin_right = 465.0
+margin_bottom = 52.0
+custom_styles/focus = SubResource( 5 )
+icon = ExtResource( 32 )
+flat = true
+
+[node name="CC" type="CenterContainer" parent="Gamemode"]
+margin_top = 56.0
+margin_right = 465.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="Gamemode/CC"]
+margin_left = 113.0
+margin_top = 5.0
+margin_right = 351.0
+margin_bottom = 319.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Gamemode/CC/VB"]
+margin_right = 238.0
+margin_bottom = 176.0
+
+[node name="Arcade" type="Button" parent="Gamemode/CC/VB/CenterContainer"]
+margin_left = 48.0
+margin_right = 190.0
+margin_bottom = 176.0
+custom_styles/focus = SubResource( 6 )
+icon = ExtResource( 8 )
+flat = true
+clip_text = true
+
+[node name="Zen" type="Button" parent="Gamemode/CC/VB"]
+margin_top = 180.0
+margin_right = 238.0
+margin_bottom = 314.0
+custom_styles/focus = SubResource( 7 )
+icon = ExtResource( 7 )
+flat = true
+
+[node name="MC" type="MarginContainer" parent="Gamemode"]
+margin_top = 384.0
+margin_right = 465.0
+margin_bottom = 554.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Gamemode/MC"]
+margin_left = 20.0
+margin_right = 445.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 170 )
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "Arcade: one minute for each round. In some rounds number of request increases. You need to collect points to proceed or upgrade between rounds.\""
+fit_content_height = true
+
+[node name="HB" type="HBoxContainer" parent="Gamemode"]
+margin_top = 558.0
+margin_right = 465.0
+margin_bottom = 628.0
+rect_min_size = Vector2( 0, 70 )
+size_flags_horizontal = 3
+
+[node name="New" type="Button" parent="Gamemode/HB"]
+margin_right = 230.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 8 )
+custom_fonts/font = ExtResource( 4 )
+text = "New game"
+flat = true
+
+[node name="Continue" type="Button" parent="Gamemode/HB"]
+margin_left = 234.0
+margin_right = 465.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 9 )
+custom_fonts/font = ExtResource( 4 )
+text = "Continue"
+flat = true
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -11.965
+
+[node name="Beat1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+
+[node name="Beat2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="Container" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 358.0
+margin_bottom = 632.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+custom_constants/separation = 4
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FaceButtons" type="HBoxContainer" parent="Container"]
+visible = false
+margin_right = 358.0
+margin_bottom = 300.0
+
+[node name="ToMenu" type="VBoxContainer" parent="Container/FaceButtons"]
+margin_right = 72.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+
+[node name="Pause" type="Button" parent="Container/FaceButtons/ToMenu"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 3 )
+flat = true
+
+[node name="Random" type="Button" parent="Container/FaceButtons/ToMenu"]
+margin_top = 66.0
+margin_right = 72.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 15 )
+flat = true
+
+[node name="Tick" type="Button" parent="Container/FaceButtons/ToMenu"]
+margin_top = 132.0
+margin_right = 72.0
+margin_bottom = 194.0
+action_mode = 0
+icon = ExtResource( 31 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Container/FaceButtons/ToMenu"]
+margin_top = 198.0
+margin_right = 72.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Face" type="CenterContainer" parent="Container/FaceButtons"]
+margin_left = 76.0
+margin_right = 282.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+position = Vector2( 177, 151 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 14 )
+
+[node name="Eyes" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 27 )
+offset = Vector2( 85, 65 )
+
+[node name="Nose" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 40 )
+offset = Vector2( 85, 83 )
+
+[node name="Mouth" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 53 )
+offset = Vector2( 86, 97 )
+
+[node name="Hair" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 64 )
+offset = Vector2( 90, 70 )
+
+[node name="Glasses" type="AnimatedSprite" parent="Container/FaceButtons/Face"]
+scale = Vector2( 2, 2 )
+z_index = 2
+frames = SubResource( 69 )
+frame = 1
+offset = Vector2( 88, 77 )
+
+[node name="Buttons" type="VBoxContainer" parent="Container/FaceButtons"]
+margin_left = 286.0
+margin_right = 358.0
+margin_bottom = 300.0
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Hair" type="Button" parent="Container/FaceButtons/Buttons"]
+margin_top = 29.0
+margin_right = 72.0
+margin_bottom = 91.0
+action_mode = 0
+icon = ExtResource( 24 )
+flat = true
+
+[node name="Eye" type="Button" parent="Container/FaceButtons/Buttons"]
+margin_top = 89.0
+margin_right = 72.0
+margin_bottom = 151.0
+action_mode = 0
+icon = ExtResource( 28 )
+flat = true
+
+[node name="Nose" type="Button" parent="Container/FaceButtons/Buttons"]
+margin_top = 149.0
+margin_right = 72.0
+margin_bottom = 211.0
+action_mode = 0
+icon = ExtResource( 14 )
+flat = true
+
+[node name="Mouth" type="Button" parent="Container/FaceButtons/Buttons"]
+margin_top = 209.0
+margin_right = 72.0
+margin_bottom = 271.0
+action_mode = 0
+icon = ExtResource( 23 )
+flat = true
+
+[node name="NameAgeGender" type="PanelContainer" parent="Container"]
+margin_right = 358.0
+margin_bottom = 70.0
+custom_styles/panel = SubResource( 70 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/NameAgeGender"]
+margin_right = 358.0
+margin_bottom = 70.0
+
+[node name="NameAge" type="TextEdit" parent="Container/NameAgeGender/HBoxContainer"]
+margin_right = 284.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+custom_colors/symbol_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+custom_colors/background_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+text = "  Name, age"
+syntax_highlighting = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+caret_moving_by_right_click = false
+
+[node name="Control" type="Control" parent="Container/NameAgeGender/HBoxContainer"]
+margin_left = 288.0
+margin_right = 358.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Container/NameAgeGender/HBoxContainer/Control"]
+position = Vector2( -4, 0 )
+frames = SubResource( 73 )
+animation = "male"
+centered = false
+offset = Vector2( 0, 4 )
+
+[node name="Interests" type="PanelContainer" parent="Container"]
+margin_top = 74.0
+margin_right = 358.0
+margin_bottom = 588.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 70 )
+
+[node name="Interests" type="VBoxContainer" parent="Container/Interests"]
+margin_right = 358.0
+margin_bottom = 514.0
+custom_constants/separation = 4
+
+[node name="Job" type="HBoxContainer" parent="Container/Interests/Interests"]
+margin_right = 358.0
+margin_bottom = 32.0
+custom_constants/separation = 10
+
+[node name="Control" type="Control" parent="Container/Interests/Interests/Job"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Container/Interests/Interests/Job/Control"]
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Job" type="Label" parent="Container/Interests/Interests/Job"]
+margin_left = 38.0
+margin_right = 358.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Profession, Company"
+valign = 2
+autowrap = true
+
+[node name="Education" type="HBoxContainer" parent="Container/Interests/Interests"]
+margin_top = 36.0
+margin_right = 358.0
+margin_bottom = 68.0
+custom_constants/separation = 10
+
+[node name="Control" type="Control" parent="Container/Interests/Interests/Education"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Container/Interests/Interests/Education/Control"]
+texture = ExtResource( 20 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Education" type="Label" parent="Container/Interests/Interests/Education"]
+margin_left = 38.0
+margin_right = 358.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Study"
+valign = 2
+autowrap = true
+
+[node name="Distance" type="HBoxContainer" parent="Container/Interests/Interests"]
+margin_top = 72.0
+margin_right = 358.0
+margin_bottom = 104.0
+custom_constants/separation = 10
+
+[node name="Control" type="Control" parent="Container/Interests/Interests/Distance"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Container/Interests/Interests/Distance/Control"]
+texture = ExtResource( 16 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Distance" type="Label" parent="Container/Interests/Interests/Distance"]
+margin_left = 38.0
+margin_right = 358.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Distance"
+valign = 2
+autowrap = true
+
+[node name="LikesAndDislikes" type="Label" parent="Container/Interests/Interests"]
+margin_top = 108.0
+margin_right = 358.0
+margin_bottom = 514.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Likes
+
+  Dislikes"
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container"]
+margin_top = 592.0
+margin_right = 358.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 4
+
+[node name="Height" type="PanelContainer" parent="Container/HBoxContainer"]
+margin_right = 177.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 70 )
+
+[node name="Height" type="HBoxContainer" parent="Container/HBoxContainer/Height"]
+margin_right = 177.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Container/HBoxContainer/Height/Height"]
+margin_right = 28.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 28, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/HBoxContainer/Height/Height/CenterContainer"]
+texture = ExtResource( 25 )
+centered = false
+offset = Vector2( 8, 6 )
+
+[node name="Label" type="Label" parent="Container/HBoxContainer/Height/Height"]
+margin_left = 32.0
+margin_top = 10.0
+margin_right = 86.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 34 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Height"
+
+[node name="Weight" type="PanelContainer" parent="Container/HBoxContainer"]
+margin_left = 181.0
+margin_right = 358.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 70 )
+
+[node name="Weight" type="HBoxContainer" parent="Container/HBoxContainer/Weight"]
+margin_right = 177.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="Container/HBoxContainer/Weight/Weight"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+
+[node name="Sprite" type="Sprite" parent="Container/HBoxContainer/Weight/Weight/CenterContainer2"]
+texture = ExtResource( 26 )
+centered = false
+offset = Vector2( 8, 6 )
+
+[node name="Label" type="Label" parent="Container/HBoxContainer/Weight/Weight"]
+margin_left = 44.0
+margin_top = 10.0
+margin_right = 104.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 34 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Weight"
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CC/IconHeart" to="." method="_on_IconHeart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/How to play" to="." method="_on_How_to_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Leave" to="." method="_on_Leave_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/Try again" to="." method="_on_Try_again_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/Submit score" to="." method="_on_How_to_play_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/To menu" to="." method="_on_ReturnFromCredits_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Credits/HBoxContainer/ReturnFromCredits" to="." method="_on_ReturnFromCredits_pressed"]
+[connection signal="pressed" from="Gamemode/FromGamemode" to="." method="_on_FromGamemode_pressed"]
+[connection signal="pressed" from="Gamemode/CC/VB/CenterContainer/Arcade" to="." method="_on_Arcade_pressed"]
+[connection signal="pressed" from="Gamemode/CC/VB/Zen" to="." method="_on_Zen_pressed"]
+[connection signal="pressed" from="Gamemode/HB/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="Gamemode/HB/Continue" to="." method="_on_Continue_pressed"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Person.gd" type="Script" id=1]
+
+[node name="Person" type="Node"]
+script = ExtResource( 1 )

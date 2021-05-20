@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.905882, 0.67451, 0.690196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.686275, 0.666667, 0.72549, 1 )
+border_width_left = 21
+border_width_right = 9
+border_color = Color( 0.686275, 0.666667, 0.72549, 1 )
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color( 0.960784, 0.956863, 0.921569, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 0.901961, 0.921569, 1 )
+Button/colors/font_color_pressed = Color( 0.862745, 0.843137, 0.827451, 1 )
+Button/constants/hseparation = 0
+Button/fonts/font = null
+Button/icons/ = null
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+PanelContainer/styles/panel = SubResource( 2 )
+VScrollBar/colors/ = Color( 0, 0, 0, 1 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber_highlight = SubResource( 4 )
+VScrollBar/styles/grabber_pressed = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 6 )
+VScrollBar/styles/scroll_focus = null
