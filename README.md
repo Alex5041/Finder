@@ -1,4 +1,4 @@
-#Finder
+# Finder
 
 This is a project for [Finder][finder] game
 
