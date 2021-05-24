@@ -1,4 +1,4 @@
-class_name Message
+class_name Request
 extends Node
 var request
 var f = {}

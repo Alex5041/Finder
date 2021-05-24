@@ -10,14 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "GameClass",
+"class": "Game",
 "language": "GDScript",
-"path": "res://scripts/Main.gd"
-}, {
-"base": "Node",
-"class": "Message",
-"language": "GDScript",
-"path": "res://scripts/Message.gd"
+"path": "res://scripts/Game.gd"
 }, {
 "base": "Node",
 "class": "Penalty",
@@ -28,12 +23,23 @@ _global_script_classes=[ {
 "class": "Person",
 "language": "GDScript",
 "path": "res://scripts/Person.gd"
+}, {
+"base": "Node",
+"class": "Request",
+"language": "GDScript",
+"path": "res://scripts/Request.gd"
+}, {
+"base": "Node",
+"class": "Zen",
+"language": "GDScript",
+"path": "res://scripts/Zen.gd"
 } ]
 _global_script_class_icons={
-"GameClass": "",
-"Message": "",
+"Game": "",
 "Penalty": "",
-"Person": ""
+"Person": "",
+"Request": "",
+"Zen": ""
 }
 
 [application]

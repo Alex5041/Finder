@@ -84,14 +84,14 @@ func _on_New_pressed():
 	Info.loaded = false
 	get_node("Gamemode").visible = false
 	get_node("MarginContainer").visible = true
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://Zen.tscn")
 
 
 func _on_Try_again_pressed():
 	tap()
 	get_node("GameOver").visible = false
 	get_node("MarginContainer").visible = true
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://Zen.tscn")
 
 
 func _on_IconHeart_pressed():
@@ -110,7 +110,7 @@ func _on_Continue_pressed():
 	tap()
 	if Info.canLoad() == 1:
 		Info.loaded = true
-		get_tree().change_scene("res://Game.tscn")
+		get_tree().change_scene("res://Zen.tscn")
 		
 func tap():
 	$Tap.set_pitch_scale(randf()/4+0.9)

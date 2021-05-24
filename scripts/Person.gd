@@ -1,6 +1,5 @@
 class_name Person
 extends Node
-#onready var info = Info.new()
 var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
 var f = {}
 var face = []
@@ -18,8 +17,14 @@ var distanceUnits:String
 var heightUnits:String
 var weightUnits:String
 var glasses:bool = false
-var fit:bool = false
-var broken:int = -1
+var type:int = 0
+
+enum pType{
+	WRONG = -2,
+	FIT = -1,
+	BROKEN,
+}
+
 
 func _ready():
 	rnd.randomize()
@@ -68,30 +73,48 @@ func _ready():
 		glasses = true
 		face.append(rnd.randi_range(0,3))
 
+# giving type cause person might be from saved file.
+func initialize(typeGiven:int, reqArr:Array):
+	self.type = typeGiven
+	match type:
+		pType.WRONG:
+		# check all requests.
+			for i in reqArr.size():
+				if check(i):
+					type = pType.FIT
+		pType.FIT:
+			makeFit(reqArr[rnd.randi_range(0, reqArr.size())])
+		_:
+			makeBroken()
+
 
 func writed():
 	job = f.get("workProfession") + ", " + f.get("workPlace")
 	education = (f.get("educationPlace") + " of " + f.get("educationTown")
-	) if rnd.randi()%2==0 else (f.get("educationTown") + " " + f.get(
+	) if chance() else (f.get("educationTown") + " " + f.get(
 		"educationPlace"))
-	if rnd.randi_range(0, 1) == 1:
+	if chance():
 		distanceUnits = "m"
 		distance = f.get("distance")
 	else:
 		distanceUnits = "km"
 		distance = float(f.get("distance")) / 1000
-	if rnd.randi_range(0,1) == 0:
+	if chance():
 		height = float(f.get("height")) / 100
 		heightUnits = "m"
 	else:
 		height = f.get("height")
 		heightUnits = "cm"
-	if(rnd.randi_range(0,1) == 0):
+	if chance():
 		weight = float(f.get("weight")) / 100
 		weightUnits = "q"
 	else:
 		weightUnits = "kg"
 		weight = f.get("weight")
+
+# 50/50 chance of true and false respectively.
+func chance() -> bool:
+	return rnd.randi_range(1, 100) <= 50
 
 
 func check(r) -> bool:
@@ -106,18 +129,16 @@ func check(r) -> bool:
 
 
 func makeFit(r):
-	print("making fit")
-	fit = true
 	for i in r.f.keys():
-		if r.comp.has(i+"Comp"):
+		if r.comp.has(i + "Comp"):
 			# 0 =, 1 >, 2 <
-			match r.comp.get(i+"Comp"):
+			match r.comp.get(i + "Comp"):
 				0:
 					f[i] = r.f.get(i)
 				1:
-					f[i] = rnd.randi_range(r.f.get(i)+1,ceils.get(i))
+					f[i] = rnd.randi_range(r.f.get(i) + 1, ceils.get(i))
 				2:
-					f[i] = rnd.randi_range(floors.get(i),r.f.get(i)-1)
+					f[i] = rnd.randi_range(floors.get(i), r.f.get(i) - 1)
 		else:
 			f[i] = r.f.get(i)
 # Won't work with many values in r.likes (more than one)
@@ -126,7 +147,7 @@ func makeFit(r):
 			if likes.size() == 0:
 				likes.append(i)
 			else:
-				likes[rnd.randi_range(0, likes.size()-1)] = i
+				likes[rnd.randi_range(0, likes.size() - 1)] = i
 # erasing dislikes that are the same to needed likes
 		dislikes.erase(i)
 	for i in r.dislikes:
@@ -134,21 +155,14 @@ func makeFit(r):
 			if dislikes.size() == 0:
 				dislikes.append(i)
 			else:
-				dislikes[rnd.randi_range(0, dislikes.size()-1)] = i
+				dislikes[rnd.randi_range(0, dislikes.size() - 1)] = i
 		likes.erase(i)
 
 
-func changeDislikes():
-	pass
-
-
 func makeBroken():
-	broken = rnd.randi_range(0, 10)
-	#print(broken)
-	match broken:
+	type = rnd.randi_range(0, 10)
+	match type:
 		0:
-			# make 0 frame empty in all  features
-			# Made
 			face[rnd.randi_range(0, 2)] = 0
 		1:
 			f["nam"] = randString()
@@ -176,9 +190,8 @@ func makeBroken():
 			f["height"] = -f["height"]
 		10:
 			f["weight"] = -f["weight"]
-	pass
 
-
+# creates random string from unused anywhere else symbols.
 func randString() -> String:
 	var nonLetter = rnd.randi_range(91, 95)
 	var res = ""
@@ -186,7 +199,6 @@ func randString() -> String:
 		res += char(rnd.randi_range(65,122))
 	res[rnd.randi_range(0, res.length()-1)] = nonLetter
 	return res
-	pass
 
 
 func checkCompare(par, r) -> bool:
@@ -202,7 +214,7 @@ func checkCompare(par, r) -> bool:
 				return false
 	return true
 
-
+# creates sentences from interests array.
 func interestsText() -> String:
 	var text = ""
 	for i in likes:
@@ -219,22 +231,22 @@ func interestsText() -> String:
 	text.erase(text.length()-1, 1)
 	return text
 
-
+# creates likes or dislikes array.
 func createPreferences():
 	var arr = []
 	for i in rnd.randi_range(1, 2):
 		var newElement = rnd.randi_range(
-			0,Info.items.size()+Info.actions.size()-1)
-		newElement = checkCoincidence(arr, newElement)
+			0, Info.items.size() + Info.actions.size() - 1)
+		newElement = getUniqueElement(arr, newElement)
 		arr.append(newElement)
 	return arr
 
-
-func checkCoincidence(arr, elem):
+# reqursively returns unique element that is not in given array.
+func getUniqueElement(arr, elem):
 	for j in arr.size():
 		if arr[j] == elem:
-			return checkCoincidence(arr,(
-				elem + 1)%(Info.items.size()+Info.actions.size()-1))
+			return getUniqueElement(arr, (elem + 1)
+			 % (Info.items.size() + Info.actions.size() - 1))
 	return elem
 
 

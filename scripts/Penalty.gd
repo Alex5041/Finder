@@ -21,12 +21,8 @@ func _ready():
 
 
 func addPenalty(p:Person):
-#	self.get("custom_styles/panel").border_color = Color("dc534b")
-#	self.get("custom_styles/panel").corner_radius_top_right = 0
-#	self.get("custom_styles/panel").corner_radius_bottom_right = 0
-#	self.get("custom_styles/panel").corner_radius_bottom_left = 0
-	if p.broken > -1:
-		match p.broken:
+	if p.type > -1:
+		match p.type:
 			0:
 				text = "something's wrong with portrait"
 			1:
@@ -49,7 +45,7 @@ func addPenalty(p:Person):
 				text = "height is not a positive number or units are strange"
 			10:
 				text = "weight is not a positive number or units are strange"
-	elif p.fit:
+	elif p.type == Person.pType.FIT:
 		text = "profile matches a request"
 	else:
 		text = "profile doesn't match any request"
@@ -58,5 +54,5 @@ func addPenalty(p:Person):
 func checkCoincidence(arr, elem):
 	for j in arr.size():
 		if arr[j] == elem:
-			return checkCoincidence(arr,(elem + 1) % 8)
+			return checkCoincidence(arr, (elem + 1) % 8)
 	return elem

@@ -1,4 +1,4 @@
-class_name GameClass
+class_name Zen
 extends Node
 onready var p = load("Person.tscn")
 onready var nameAge = get_node(
@@ -25,20 +25,14 @@ var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
 var person
 var wrongPersonArray = []
 var penaltyIter:int = 0
-var tex
 var canShoot:bool = false
-var timer = Timer.new()
+
 onready var startTimer = Timer.new()
 var pol:PoolVector2Array = PoolVector2Array([0])
-var timeLeft = 20
-var upgFlags = [{}, false, false, 0, 0, false, false]
 var chosen = []
-var isRoundEnded:bool = false
-var endRoundTime = 0
 var actionType = actionTypeEnum.SWIPING
 var timeStart = 5
 var gameOverPressed = false
-var colorChange = Tween.new()
 var countdown = 5
 var roundNum = 0
 
@@ -46,87 +40,40 @@ var total = 0
 var correct = 0
 
 enum actionTypeEnum{
-	SWIPING,
-	PENALTY_INFO
+	SWIPING, # In-Profile
+	PENALTY_INFO, # In-Wrong-Profiles
 	TIME_OUT
 }
 
-func _process(delta):
-	if Info.arcade:
-		if timeLeft < 0 and !isRoundEnded:
-			$TimeIsUp.play()
-			# Round ended.
-			# all one-round upgrades are destroyed
-			upgFlags[1] = false; upgFlags[2] = false; upgFlags[6] = false;
-			upgFlags[5] = false
-			$Overlay/PanelContainer/CenterContainer/VBoxContainer/Big.text = (
-			"Time out!")
-			$Overlay/PanelContainer/CenterContainer/VBoxContainer/Small.text = (
-			"press this to proceed to powerups")
-			$Overlay/PanelContainer.visible = true
-			colorChange.interpolate_property($Overlay/PanelContainer,(
-					"rect_position"),$Overlay/PanelContainer.rect_position,(
-						Vector2(73, 119)),0.45,Tween.TRANS_ELASTIC)
-			colorChange.start()
-			endRoundTime = timeLeft
-			isRoundEnded = true
-			print()
-			print(total)
-			print(correct)
-		elif countdown < 0:
-			timeLeft -= delta
-			get_node("VC/TimeLeft/Line2D").points[0].x = (
-			timeStart-timeLeft)/timeStart*480-32
 
 func _ready():
-	#if Info.arcade:
-	#	Info.rightAction = 5
-	add_child(colorChange)
-	add_child(timer)
-	add_child(startTimer)
-	startTimer.connect("timeout", self, "oneSecondLessFromStart")
-	startTimer.one_shot = true
 	rnd.randomize()
 	$VC.rect_size = OS.get_window_safe_area().size
-	#$VC/Profile.rect_global_position = Vector2()
 	$VC/Profile.rect_pivot_offset = Vector2(
 		$VC/Profile.rect_size.x/2,$VC/Profile.rect_size.y*2)
 	$VC/Request.rect_pivot_offset = Vector2(
 		$VC/Request.rect_size.x/2,$VC/Request.rect_size.y)
-	$Like.visible = false
-	$Dislike.visible = false
-	$Report.visible = false
-	$Profile.visible = false
-	$Next.visible = false
-	$Previous.visible = false
-	$Request.visible = false
+	falseVisible()
 	configureButtonSizes()
 	placeFace()
-
 	roundStart()
 
 func roundStart():
 	roundNum += 1
-	countdown = 5
-	get_node("VC/TimeLeft/Line2D").points[0].x = -32
 	$Overlay/PanelContainer.rect_position = Vector2(28, 500)
 	$Overlay/PanelContainer/CenterContainer/VBoxContainer/Big.text = (
 		"You have " + str(countdown) + " s before start")
-	timeLeft = 20 + upgFlags[3]
 	
 	$VC/Upgrades.visible = false
 	$VC/Buttons.visible = true
-	if Info.arcade:
-		isRoundEnded = true
-		$VC/TimeLeft.visible = true
-		$Overlay/PanelContainer.visible = true
-	timer.start(.1)
+	
+
 	if requests.size() > 0:
 		requests[0].queue_free()
 		requests.clear()
 	addRequest(rnd.randi_range(1, 3))
 	createPerson(Info.loadGame() if Info.loaded else null)
-	#Info.rightAction = 0
+
 	if !Info.arcade:
 		$Overlay/Top/Score.text = str(Info.rightAction) + "/" + str(Info.record)
 	else:
@@ -134,23 +81,8 @@ func roundStart():
 		) + "/" + str((roundNum + 1) * 5)
 		$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
 			Info.rightAction < (roundNum+1)*5)  else Color("f3f4e0"))
-	timeStart = timeLeft
 	
-	startTimer.start(1)
 	_on_Request_pressed(false)
-
-
-func oneSecondLessFromStart():
-	if Info.arcade:
-		countdown -= 1
-		if countdown == -1:
-			isRoundEnded = false
-			$Overlay/PanelContainer.visible = false
-			$Overlay/PanelContainer.rect_position = Vector2(500, 119)
-		else:
-			$Overlay/PanelContainer/CenterContainer/VBoxContainer/Big.text = (
-			"You have " + str(countdown) + " s before start")
-			startTimer.start(1)
 
 
 func createChosen():
@@ -188,26 +120,22 @@ func _input(event):
 			# Like
 			if $VC/Profile.rect_position.x > 35 and abs(
 				$VC/Profile.rect_position.y) <= 35:
-				swiping(0)
+				swipe(0)
 			# Dislike
 			elif $VC/Profile.rect_position.x < -35 and abs(
 				$VC/Profile.rect_position.y) <= 35:
-				swiping(1)
+				swipe(1)
 			# Report mode
 			elif $VC/Profile.rect_position.y < -35 and abs(
 				$VC/Profile.rect_position.x) <= 35:
-				swiping(2)
+				swipe(2)
 			# Request mode
 			elif $VC/Profile.rect_position.y > 35 and abs(
 				$VC/Profile.rect_position.x) <= 35:
 				_on_Request_pressed(false)
 			$VC/Profile.rect_rotation = 0
-			$Like.visible = false
-			$Dislike.visible = false
-			$Report.visible = false
-			$Request.visible = false
-			$Next.visible = false
-			$Previous.visible = false
+			falseVisible()
+			$Profile.visible = true
 			$VC/Profile.rect_position = Vector2()
 		elif $VC/Request.visible:
 			if $VC/Request.rect_position.y > 35 and abs(
@@ -217,10 +145,11 @@ func _input(event):
 			$Profile.visible = false
 			$VC/Request.rect_position = Vector2()
 
+	# No action happening
 	if event is InputEventScreenDrag:
 		if $VC/Profile.visible == true:
-			$VC/Profile.rect_rotation += (event.relative).x/10
-			$VC/Profile.rect_position += event.relative/3
+			$VC/Profile.rect_rotation += (event.relative).x / 10
+			$VC/Profile.rect_position += event.relative / 3
 			# Like
 			if $VC/Profile.rect_position.x > 35 and abs(
 				$VC/Profile.rect_position.y) <= 35:
@@ -245,18 +174,14 @@ func _input(event):
 				$VC/Profile.rect_position.x) <= 35 and (
 					actionType == actionTypeEnum.SWIPING):
 				$Request.visible = true
-			else:
-				$Report.visible = false
-				$Dislike.visible = false
-				$Like.visible = false
-				$Request.visible = false
-				$Next.visible = false
-				$Previous.visible = false
-			#$VC/Profile.rect_scale = Vector2(0.9, 0.9)
-			#$Like.modulate.a = $VC/Profile.rect_rotation/360
+
+			# Not necessary probably.
+			#else:
+			#	falseVisible()
+			#	$Profile.visible = true
 		elif $VC/Request.visible == true:
-			$VC/Request.rect_rotation += (event.relative).x/10
-			$VC/Request.rect_position += event.relative/3
+			$VC/Request.rect_rotation += (event.relative).x / 10
+			$VC/Request.rect_position += event.relative / 3
 			if $VC/Request.rect_position.y > 35 and abs(
 				$VC/Request.rect_position.x) <= 35:
 					$Profile.visible = true
@@ -264,9 +189,6 @@ func _input(event):
 				$Profile.visible = false
 		elif $VC/Penalty.visible == true:
 			scroll_container.scroll_vertical -= event.relative.y
-#		elif $VC/Request.visible == true:
-#			scroll_container2.scroll_vertical -= event.relative.y
-
 	# Delete in release.
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_RIGHT:
@@ -277,31 +199,42 @@ func _input(event):
 			person.queue_free()
 			createPerson()
 
+
 func rightAction():
-	$VC/TimeLeft/Line2D.default_color = Color("97B2ED")
-	colorChange.interpolate_property(
-		$VC/TimeLeft/Line2D,(
-			"default_color"),$VC/TimeLeft/Line2D.default_color,Color(
-				"F9FAF0"),1,Tween.TRANS_LINEAR)
-	colorChange.start()
 	correct += 1
-	timeLeft += 1
 	$Right.play()
 	Info.rightAction += 1
-	if !Info.arcade:
-		$Overlay/Top/Score.text = str(Info.rightAction) + "/" + str(Info.record)
-	else:
-		$Overlay/Top/Score.text = str(Info.rightAction + Info.prevRoundScore
-		) + "/" + str((roundNum + 1) * 5)
-		$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
-			Info.rightAction + Info.prevRoundScore < (roundNum+1)*5
-			)  else Color("f3f4e0"))
+	$Overlay/Top/Score.text = str(Info.rightAction) + "/" + str(Info.record)
 	person.queue_free()
+
+
+func wrongAction(var type):
+	var errorText:String
+	match type:
+		0:
+			errorText = "liked"
+		1:
+			errorText = "disliked"
+		2:
+			errorText = "reported"
+	$Wrong.play()
+	gameOverOrPenalty(errorText)
+
+
+func falseVisible():
+	$Like.visible = false
+	$Dislike.visible = false
+	$Report.visible = false
+	$Profile.visible = false
+	$Next.visible = false
+	$Previous.visible = false
+	$Request.visible = false
+
 
 # 0 like
 # 1 dislike
 # 2 report
-func swiping(var type):
+func swipe(var type):
 	if actionType == actionTypeEnum.PENALTY_INFO:
 		match type:
 			0:
@@ -323,34 +256,8 @@ func swiping(var type):
 			rightAction()
 		# Wrong action
 		else:
-			var errorText:String
-			match type:
-				0:
-					errorText = "liked"
-				1:
-					errorText = "disliked"
-				2:
-					errorText = "reported"
-			timeLeft -= 4
-			$Wrong.play()
-			$VC/TimeLeft/Line2D.default_color = Color("D55D6F")
-			colorChange.interpolate_property(
-				$VC/TimeLeft/Line2D,(
-					"default_color"),$VC/TimeLeft/Line2D.default_color,Color(
-						"F9FAF0"),1,Tween.TRANS_LINEAR)
-			colorChange.start()
-			gameOverOrPenalty(errorText)
+			wrongAction(type)
 		createPerson()
-
-
-#func timeout():
-#	var image = get_viewport().get_texture().get_data()
-#	image.flip_y()
-#	image.resize((get_viewport().size.x-50)/2,(
-#		get_viewport().size.x-50)/2*854/480)
-#	tex = ImageTexture.new()
-#	tex.create_from_image(image)
-#	timer.stop()
 
 
 func displayPerson(pers:Person):
@@ -383,6 +290,7 @@ func displayPerson(pers:Person):
 	else:
 		$VC/Profile/FaceButtons/Face/Glasses.visible = false
 
+
 func createPerson(data = null):
 	total += 1
 	person = p.instance()
@@ -403,8 +311,7 @@ func createPerson(data = null):
 	displayPerson(person)
 	if !person.fit :
 		person.fit = person.check(requests[0])
-	print(person.fit)
-	print(person.broken)
+
 
 
 func addRequest(var num):
@@ -423,11 +330,6 @@ func addPenalty(actionTypeText:String):
 	r.addPenalty(person)
 	wrongPersonArray.append({"person":person,"action":actionTypeText+(
 		", "+r.text)})
-	#r.get_node("MC/RichTextLabel").parse_bbcode(r.text)
-#	if(tex != null):
-#		r.get_node("MC/RichTextLabel").add_image(tex)
-#	get_node("VC/Profile/V/FaceButtons/Buttons/Penalty"
-#	).icon.current_frame = 1
 
 
 func _on_Pause_pressed():
@@ -468,6 +370,7 @@ func _on_Request_pressed(flag):
 	get_node("VC/Profile").visible = false
 	get_node("VC/Request").visible = true
 
+
 # Info button
 func _on_Penalty_pressed():
 	if wrongPersonArray.size() > 0:
@@ -503,7 +406,7 @@ func _on_Report_pressed():
 
 func reportButtonGeneral(indStart:int, indEnd:int):
 	tap()
-	timer.start(.1)
+	#timer.start(.1)
 	if person.broken >= indStart and person.broken <= indEnd:
 		$Right.play()
 		timeLeft += 1
@@ -520,7 +423,6 @@ func reportButtonGeneral(indStart:int, indEnd:int):
 func gameOverOrPenalty(actionTypeText:String):
 	if !Info.arcade:
 		isRoundEnded = true
-#		Info.image = tex
 		Info.gameOver = true
 		Info.eraseGame()
 		$Overlay/PanelContainer.visible = true
@@ -528,45 +430,11 @@ func gameOverOrPenalty(actionTypeText:String):
 			"Game Over!")
 		$Overlay/PanelContainer/CenterContainer/VBoxContainer/Small.text = (
 			"press this to proceed")
-#		get_tree().change_scene("res://Title.tscn")
-#	else:
 	addPenalty(actionTypeText)
 
 
 func toTitle():
 	print("Title")
-
-
-func processUpgrades(ind:int):
-	var upg = chosen[ind]
-	print(Info.rightAction)
-	match upg.get("num"):
-		0:
-			print("hard")
-		3:
-			if Info.upgCost[3] <= Info.rightAction:
-				upgFlags[3] += 5
-				Info.rightAction -= Info.upgCost[3]
-				print("Bought")
-				roundStart()
-			else:
-				$VC/Upgrades/Label.text = "Not enough points!"
-		4:
-			if Info.upgCost[4] <= Info.rightAction:
-				upgFlags[4] += 1
-				Info.rightAction -= Info.upgCost[4]
-				print("Bought")
-				roundStart()
-			else:
-				$VC/Upgrades/Label.text = "Not enough points!"
-		_:
-			if Info.upgCost[upg.get("num")] <= Info.rightAction:
-				upgFlags[upg.get("num")] = true
-				Info.rightAction -= Info.upgCost[upg.get("num")]
-				print("Bought")
-				roundStart()
-			else:
-				$VC/Upgrades/Label.text = "Not enough points!"
 
 func _on_Face_pressed():
 	reportButtonGeneral(0, 0)
