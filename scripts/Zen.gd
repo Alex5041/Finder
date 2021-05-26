@@ -80,7 +80,7 @@ func roundStart():
 		$Overlay/Top/Score.text = str(Info.rightAction + Info.prevRoundScore
 		) + "/" + str((roundNum + 1) * 5)
 		$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
-			Info.rightAction < (roundNum+1)*5)  else Color("f3f4e0"))
+			Info.rightAction < (roundNum + 1) * 5)  else Color("f3f4e0"))
 	
 	_on_Request_pressed(false)
 
@@ -247,7 +247,7 @@ func swipe(var type):
 			penaltyIter = wrongPersonArray.size() - 1
 		infoModeUpdate()
 		return
-	elif !Info.gameOver and !isRoundEnded:
+	elif !Info.gameOver:
 		if type == 2 and person.broken > -1:
 			rightAction()
 		elif person.fit and type == 0 and person.broken == -1:
@@ -343,8 +343,7 @@ func _on_Return_pressed(flag):
 	infoModeLeave()
 	if flag:
 		tap()
-	if isRoundEnded:
-		$Overlay/PanelContainer.visible = true
+	$Overlay/PanelContainer.visible = true
 	$VC/Buttons/Report/reportMode.flat = true
 	$VC/Buttons/Request/requestMode.flat = true
 	$VC/Buttons/Profile/profileMode.flat = false
@@ -359,9 +358,9 @@ func _on_Return_pressed(flag):
 func _on_Request_pressed(flag):
 	if flag:
 		tap()
-	if isRoundEnded and countdown < 0:
+	if countdown < 0:
 		$Overlay/PanelContainer.visible = false
-	elif isRoundEnded:
+	else:
 		$Overlay/PanelContainer.visible = true
 	$VC/Buttons/Report/reportMode.flat = true
 	$VC/Buttons/Request/requestMode.flat = false
@@ -409,10 +408,8 @@ func reportButtonGeneral(indStart:int, indEnd:int):
 	#timer.start(.1)
 	if person.broken >= indStart and person.broken <= indEnd:
 		$Right.play()
-		timeLeft += 1
 		Info.rightAction += 1
 	else:
-		timeLeft -= 4
 		$Wrong.play()
 		gameOverOrPenalty("LOL")
 	createPerson()
@@ -422,7 +419,6 @@ func reportButtonGeneral(indStart:int, indEnd:int):
 
 func gameOverOrPenalty(actionTypeText:String):
 	if !Info.arcade:
-		isRoundEnded = true
 		Info.gameOver = true
 		Info.eraseGame()
 		$Overlay/PanelContainer.visible = true
@@ -470,22 +466,6 @@ func _on_Weight_pressed():
 func tap():
 	$Tap.set_pitch_scale(randf()/4+0.9)
 	$Tap.play()
-
-
-func _on_Upg0_pressed():
-	processUpgrades(0)
-
-
-func _on_Upg1_pressed():
-	processUpgrades(1)
-
-
-func _on_Upg2_pressed():
-	processUpgrades(2)
-
-
-func _on_UpgNothing_pressed():
-	roundStart()
 
 # panel buttons changing sizes.
 func configureButtonSizes():
@@ -566,4 +546,3 @@ func _on_TimeOutOrGameOver(event):
 			tap()
 			countdown = 0
 			startTimer.stop()
-			oneSecondLessFromStart()

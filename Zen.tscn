@@ -1655,6 +1655,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Face" to="." method="_on_Face_pressed"]
 [connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Suitcase" to="." method="_on_Suitcase_pressed"]
 [connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Book" to="." method="_on_Book_pressed"]
