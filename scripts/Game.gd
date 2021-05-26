@@ -25,12 +25,11 @@ var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
 var person
 var wrongPersonArray = []
 var penaltyIter:int = 0
-var canShoot:bool = false
 
 onready var startTimer = Timer.new()
 var pol:PoolVector2Array = PoolVector2Array([0])
 var chosen = []
-var actionType = actionTypeEnum.SWIPING
+var actionType = actionTypeEnum.CURRENT_PROFILE
 var timeStart = 5
 var gameOverPressed = false
 var countdown = 5
@@ -40,9 +39,9 @@ var total = 0
 var correct = 0
 
 enum actionTypeEnum{
-	SWIPING, # In-Profile
-	PENALTY_INFO, # In-Wrong-Profiles
-	TIME_OUT
+	CURRENT_PROFILE, # In-Profile
+	MADE_ERRORS, # In-Wrong-Profiles
+	OUT
 }
 
 
@@ -81,8 +80,6 @@ func roundStart():
 		) + "/" + str((roundNum + 1) * 5)
 		$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
 			Info.rightAction < (roundNum+1)*5)  else Color("f3f4e0"))
-	
-	_on_Request_pressed(false)
 
 
 func createChosen():
@@ -111,7 +108,7 @@ func infoModeUpdate():
 	penaltyIter + 1)+"/"+str(wrongPersonArray.size()) + "  "
 
 func infoModeLeave():
-	actionType = actionTypeEnum.SWIPING
+	actionType = actionTypeEnum.CURRENT_PROFILE
 	$VC/Profile.theme = load("res://resources/theme.tres")
 
 func _input(event):
@@ -132,7 +129,7 @@ func _input(event):
 			# Request mode
 			elif $VC/Profile.rect_position.y > 35 and abs(
 				$VC/Profile.rect_position.x) <= 35:
-				_on_Request_pressed(false)
+				_on_Request(false)
 			$VC/Profile.rect_rotation = 0
 			falseVisible()
 			$Profile.visible = true
@@ -140,7 +137,7 @@ func _input(event):
 		elif $VC/Request.visible:
 			if $VC/Request.rect_position.y > 35 and abs(
 				$VC/Request.rect_position.x) <= 35:
-					_on_Return_pressed(false)
+					_on_Profile(false)
 			$VC/Request.rect_rotation = 0
 			$Profile.visible = false
 			$VC/Request.rect_position = Vector2()
@@ -153,26 +150,26 @@ func _input(event):
 			# Like
 			if $VC/Profile.rect_position.x > 35 and abs(
 				$VC/Profile.rect_position.y) <= 35:
-				if actionType == actionTypeEnum.SWIPING:
+				if actionType == actionTypeEnum.CURRENT_PROFILE:
 					$Like.visible = true
 				else:
 					$Previous.visible = true
 			# Dislike
 			elif $VC/Profile.rect_position.x < -35 and abs(
 				$VC/Profile.rect_position.y) <= 35:
-				if actionType == actionTypeEnum.SWIPING:
+				if actionType == actionTypeEnum.CURRENT_PROFILE:
 					$Dislike.visible = true
 				else:
 					$Next.visible = true
 			# Report
 			elif $VC/Profile.rect_position.y < -35 and abs(
 				$VC/Profile.rect_position.x) <= 35 and (
-					actionType == actionTypeEnum.SWIPING):
+					actionType == actionTypeEnum.CURRENT_PROFILE):
 				$Report.visible = true
 			# Profile
 			elif $VC/Profile.rect_position.y > 35 and abs(
 				$VC/Profile.rect_position.x) <= 35 and (
-					actionType == actionTypeEnum.SWIPING):
+					actionType == actionTypeEnum.CURRENT_PROFILE):
 				$Request.visible = true
 
 			# Not necessary probably.
@@ -235,7 +232,7 @@ func falseVisible():
 # 1 dislike
 # 2 report
 func swipe(var type):
-	if actionType == actionTypeEnum.PENALTY_INFO:
+	if actionType == actionTypeEnum.MADE_ERRORS:
 		match type:
 			-2:
 				penaltyIter -= 1
@@ -333,14 +330,14 @@ func addPenalty(actionTypeText:String):
 #	).icon.current_frame = 1
 
 
-func _on_Pause_pressed():
+func _on_Pause():
 	tap()
 	Info.save(person, requests)
 	Info.gameOver = false
 	get_tree().change_scene("res://Title.tscn")
 
 
-func _on_Return_pressed(flag):
+func _on_Profile(flag):
 	infoModeLeave()
 	if flag:
 		tap()
@@ -355,7 +352,7 @@ func _on_Return_pressed(flag):
 	get_node("VC/Profile/FaceButtons/CC").visible = false
 
 
-func _on_Request_pressed(flag):
+func _on_Request(flag):
 	if flag:
 		tap()
 	if countdown < 0:
@@ -368,10 +365,12 @@ func _on_Request_pressed(flag):
 	get_node("VC/Request").visible = true
 
 # Info button
-func _on_Penalty_pressed():
+func _on_Errors_Made(flag):
+	if flag:
+		 tap()
 	if wrongPersonArray.size() > 0:
 		infoModeUpdate()
-		actionType = actionTypeEnum.PENALTY_INFO
+		actionType = actionTypeEnum.MADE_ERRORS
 		$Overlay/PanelContainer.visible = false
 		$VC/Profile.theme = load("res://resources/reportTheme.tres")
 		tap()
@@ -385,35 +384,6 @@ func _on_Penalty_pressed():
 		get_node("VC/Buttons/Info/infoMode/AnimatedSprite").stop()
 		get_node("VC/Buttons/Info/infoMode/AnimatedSprite"
 		).frame = 0
-
-
-func _on_Report_pressed():
-	tap()
-	$VC/Buttons/Report/reportMode.flat = false
-	$VC/Buttons/Profile/profileMode.flat = true
-	$VC/Buttons/Request/requestMode.flat = true
-	$VC/Buttons/Info/infoMode.flat = true
-	get_node("VC/Request").visible = false
-	get_node("VC/Penalty").visible = false
-	get_node("VC/Profile").visible = true
-	get_node("VC/Profile/FaceButtons/Face").visible = false
-	get_node("VC/Profile/FaceButtons/CC").visible = true
-
-
-func reportButtonGeneral(indStart:int, indEnd:int):
-#	tap()
-#	if person.broken >= indStart and person.broken <= indEnd:
-#		$Right.play()
-#		timeLeft += 1
-#		Info.rightAction += 1
-#	else:
-#		timeLeft -= 4
-#		$Wrong.play()
-#		gameOverOrPenalty("LOL")
-#	createPerson()
-#	get_node("VC/Profile/FaceButtons/CC").visible = false
-#	get_node("VC/Profile/FaceButtons/Face").visible = true
-	pass
 
 
 func gameOverOrPenalty(actionTypeText:String):
@@ -433,36 +403,6 @@ func gameOverOrPenalty(actionTypeText:String):
 func toTitle():
 	print("Title")
 
-func _on_Face_pressed():
-	reportButtonGeneral(0, 0)
-
-
-func _on_Suitcase_pressed():
-	reportButtonGeneral(3, 4)
-
-
-func _on_Book_pressed():
-	reportButtonGeneral(5, 5)
-
-
-func _on_Location_pressed():
-	reportButtonGeneral(6, 6)
-
-
-func _on_Tag_pressed():
-	reportButtonGeneral(1, 2)
-
-
-func _on_Heart_pressed():
-	reportButtonGeneral(7, 8)
-
-
-func _on_Height_pressed():
-	reportButtonGeneral(9, 9)
-
-
-func _on_Weight_pressed():
-	reportButtonGeneral(10, 10)
 
 func tap():
 	$Tap.set_pitch_scale(randf()/4+0.9)
