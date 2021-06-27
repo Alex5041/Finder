@@ -1,0 +1,1100 @@
+[gd_scene load_steps=154 format=2]
+
+[ext_resource path="res://resources/images/noses.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/gender.png" type="Texture" id=2]
+[ext_resource path="res://resources/fonts/fontBig.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/fonts/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/images/faceButton.png" type="Texture" id=5]
+[ext_resource path="res://resources/face/noses.png" type="Texture" id=6]
+[ext_resource path="res://resources/images/glasses.png" type="Texture" id=7]
+[ext_resource path="res://resources/images/background.png" type="Texture" id=8]
+[ext_resource path="res://resources/images/heightButton.png" type="Texture" id=9]
+[ext_resource path="res://resources/smallIcons/location.png" type="Texture" id=10]
+[ext_resource path="res://resources/smallIcons/book.png" type="Texture" id=11]
+[ext_resource path="res://resources/images/suitcaseButton.png" type="Texture" id=12]
+[ext_resource path="res://resources/smallIcons/weight.png" type="Texture" id=13]
+[ext_resource path="res://resources/images/eyes.png" type="Texture" id=14]
+[ext_resource path="res://resources/face/mouths.png" type="Texture" id=15]
+[ext_resource path="res://resources/face/glasses.png" type="Texture" id=16]
+[ext_resource path="res://resources/smallIcons/suitcase.png" type="Texture" id=17]
+[ext_resource path="res://resources/images/locationButton.png" type="Texture" id=18]
+[ext_resource path="res://resources/mainButtons/penalty0.png" type="Texture" id=19]
+[ext_resource path="res://resources/face/background.png" type="Texture" id=20]
+[ext_resource path="res://resources/images/tagButton.png" type="Texture" id=21]
+[ext_resource path="res://resources/images/bookButton.png" type="Texture" id=22]
+[ext_resource path="res://resources/images/weightButton.png" type="Texture" id=23]
+[ext_resource path="res://resources/face/eyes.png" type="Texture" id=24]
+[ext_resource path="res://resources/images/mouths.png" type="Texture" id=25]
+[ext_resource path="res://resources/face/hair.png" type="Texture" id=26]
+[ext_resource path="res://resources/smallIcons/heart.png" type="Texture" id=27]
+[ext_resource path="res://resources/smallIcons/height.png" type="Texture" id=28]
+[ext_resource path="res://resources/mainButtons/penalty1.png" type="Texture" id=29]
+[ext_resource path="res://resources/mainButtons/request.png" type="Texture" id=30]
+[ext_resource path="res://resources/images/hair.png" type="Texture" id=31]
+[ext_resource path="res://resources/images/interest.png" type="Texture" id=32]
+[ext_resource path="res://resources/smallIcons/brokenheart.png" type="Texture" id=33]
+[ext_resource path="res://resources/theme.tres" type="Theme" id=34]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 280, 0, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 0, 232, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 280, 232, 280, 232 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 8 )
+region = Rect2( 140, 0, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 116, 140, 116 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 8 )
+region = Rect2( 140, 116, 140, 116 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 256, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 384, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 256, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 384, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 128, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 256, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 384, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 14 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 14 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 14 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 14 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 14 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 14 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 14 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 14 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 14 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ null, SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 256, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 384, 0, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 128, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 256, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 384, 120, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 128, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 256, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 384, 240, 128, 120 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 60, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 120, 64, 60 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 120, 64, 60 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ null, SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 256, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=63]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 384, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 256, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=67]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 384, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=68]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=69]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 128, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=70]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 256, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=71]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 384, 160, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 25 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 25 )
+region = Rect2( 128, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 25 )
+region = Rect2( 192, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 25 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 25 )
+region = Rect2( 128, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 25 )
+region = Rect2( 192, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 25 )
+region = Rect2( 64, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 25 )
+region = Rect2( 128, 80, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 25 )
+region = Rect2( 192, 80, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=84]
+animations = [ {
+"frames": [ null, SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=85]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 0, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=86]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 200, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=87]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 400, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 600, 0, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 0, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=90]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 200, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=91]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 400, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=92]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 600, 120, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=93]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 0, 240, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 4
+atlas = ExtResource( 26 )
+region = Rect2( 200, 240, 200, 120 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 31 )
+region = Rect2( 100, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 31 )
+region = Rect2( 200, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 31 )
+region = Rect2( 300, 0, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 31 )
+region = Rect2( 100, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 31 )
+region = Rect2( 200, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 31 )
+region = Rect2( 300, 60, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 120, 100, 60 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 31 )
+region = Rect2( 100, 120, 100, 60 )
+
+[sub_resource type="SpriteFrames" id=105]
+animations = [ {
+"frames": [ null, SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ null, SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=106]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=107]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=108]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=109]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 128, 80, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 40, 64, 40 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 40, 64, 40 )
+
+[sub_resource type="SpriteFrames" id=114]
+animations = [ {
+"frames": [ SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
+"loop": true,
+"name": "pixel",
+"speed": 5.0
+} ]
+
+[sub_resource type="AnimatedTexture" id=115]
+flags = 4
+frames = 2
+pause = true
+oneshot = true
+fps = 0.0
+frame_0/texture = ExtResource( 19 )
+frame_1/texture = ExtResource( 29 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="StyleBoxFlat" id=116]
+bg_color = Color( 0.905882, 0.67451, 0.690196, 1 )
+border_width_left = 16
+border_width_right = 16
+border_color = Color( 0.905882, 0.67451, 0.690196, 1 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 62, 62 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 2 )
+region = Rect2( 62, 0, 62, 62 )
+
+[sub_resource type="SpriteFrames" id=119]
+animations = [ {
+"frames": [ SubResource( 117 ) ],
+"loop": false,
+"name": "male",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 118 ) ],
+"loop": false,
+"name": "female",
+"speed": 5.0
+} ]
+
+[node name="Profile" type="VBoxContainer"]
+margin_right = 451.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 34 )
+custom_constants/separation = 6
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FaceButtons" type="HBoxContainer" parent="."]
+margin_top = 5.0
+margin_right = 451.0
+margin_bottom = 5.0
+
+[node name="Face" type="Node2D" parent="FaceButtons"]
+position = Vector2( 72, -280 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="AnimatedSprite" parent="FaceButtons/Face"]
+frames = SubResource( 9 )
+
+[node name="Eyes" type="AnimatedSprite" parent="FaceButtons/Face"]
+position = Vector2( 89.8917, 67.4238 )
+z_index = 1
+frames = SubResource( 34 )
+
+[node name="Nose" type="AnimatedSprite" parent="FaceButtons/Face"]
+position = Vector2( 92.3934, 86.9018 )
+z_index = 1
+frames = SubResource( 59 )
+
+[node name="Mouth" type="AnimatedSprite" parent="FaceButtons/Face"]
+position = Vector2( 95.9672, 101.361 )
+z_index = 1
+frames = SubResource( 84 )
+
+[node name="Hair" type="AnimatedSprite" parent="FaceButtons/Face"]
+position = Vector2( 96.799, 69.6622 )
+z_index = 1
+frames = SubResource( 105 )
+
+[node name="Glasses" type="AnimatedSprite" parent="FaceButtons/Face"]
+position = Vector2( 87.2916, 72.5843 )
+z_index = 2
+frames = SubResource( 114 )
+
+[node name="CC" type="CenterContainer" parent="FaceButtons"]
+visible = false
+margin_right = 451.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GC" type="GridContainer" parent="FaceButtons/CC"]
+margin_left = 75.0
+margin_top = 86.0
+margin_right = 375.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="Face" type="Button" parent="FaceButtons/CC/GC"]
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 5 )
+flat = true
+
+[node name="Suitcase" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 12 )
+flat = true
+
+[node name="Book" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 152.0
+margin_right = 224.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 22 )
+flat = true
+
+[node name="Location" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 228.0
+margin_right = 300.0
+margin_bottom = 62.0
+action_mode = 0
+icon = ExtResource( 18 )
+flat = true
+
+[node name="Tag" type="Button" parent="FaceButtons/CC/GC"]
+margin_top = 66.0
+margin_right = 72.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 21 )
+flat = true
+
+[node name="Heart" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 76.0
+margin_top = 66.0
+margin_right = 148.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 32 )
+flat = true
+
+[node name="Height" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 152.0
+margin_top = 66.0
+margin_right = 224.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 9 )
+flat = true
+
+[node name="Weight" type="Button" parent="FaceButtons/CC/GC"]
+margin_left = 228.0
+margin_top = 66.0
+margin_right = 300.0
+margin_bottom = 128.0
+action_mode = 0
+icon = ExtResource( 23 )
+flat = true
+
+[node name="Buttons" type="VBoxContainer" parent="FaceButtons"]
+visible = false
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Penalty" type="Button" parent="FaceButtons/Buttons"]
+visible = false
+margin_right = 72.0
+margin_bottom = 62.0
+action_mode = 0
+icon = SubResource( 115 )
+flat = true
+
+[node name="Request" type="Button" parent="FaceButtons/Buttons"]
+visible = false
+margin_top = 60.0
+margin_right = 72.0
+margin_bottom = 122.0
+action_mode = 0
+icon = ExtResource( 30 )
+flat = true
+
+[node name="InfoPanel" type="PanelContainer" parent="."]
+visible = false
+margin_top = 6.0
+margin_right = 451.0
+margin_bottom = 6.0
+custom_styles/panel = SubResource( 116 )
+
+[node name="HBC" type="HBoxContainer" parent="InfoPanel"]
+visible = false
+margin_left = 16.0
+margin_right = 435.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="ErrorText" type="Label" parent="InfoPanel/HBC"]
+visible = false
+margin_right = 229.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Name, age"
+autowrap = true
+
+[node name="C" type="Control" parent="InfoPanel/HBC"]
+visible = false
+margin_left = 376.0
+margin_right = 446.0
+margin_bottom = 514.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="InfoPanel/HBC/C"]
+visible = false
+position = Vector2( -4, 0 )
+frames = SubResource( 119 )
+animation = "male"
+centered = false
+offset = Vector2( 0, 4 )
+
+[node name="Number" type="Label" parent="InfoPanel/HBC"]
+margin_left = 233.0
+margin_right = 419.0
+margin_bottom = 44.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Name, age"
+align = 2
+
+[node name="NameAgeGender" type="PanelContainer" parent="."]
+margin_top = 11.0
+margin_right = 451.0
+margin_bottom = 81.0
+
+[node name="HBC" type="HBoxContainer" parent="NameAgeGender"]
+margin_right = 451.0
+margin_bottom = 70.0
+
+[node name="NameAge" type="Label" parent="NameAgeGender/HBC"]
+margin_right = 377.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Name, age"
+valign = 1
+autowrap = true
+
+[node name="C" type="Control" parent="NameAgeGender/HBC"]
+margin_left = 381.0
+margin_right = 451.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="NameAgeGender/HBC/C"]
+visible = false
+position = Vector2( -4, 0 )
+frames = SubResource( 119 )
+animation = "male"
+centered = false
+offset = Vector2( 0, 4 )
+
+[node name="Interests" type="PanelContainer" parent="."]
+margin_top = 87.0
+margin_right = 451.0
+margin_bottom = 191.0
+
+[node name="Interests" type="VBoxContainer" parent="Interests"]
+margin_right = 451.0
+margin_bottom = 104.0
+custom_constants/separation = 4
+
+[node name="Job" type="HBoxContainer" parent="Interests/Interests"]
+margin_right = 451.0
+margin_bottom = 32.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="Interests/Interests/Job"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Interests/Interests/Job/C"]
+texture = ExtResource( 17 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Job" type="Label" parent="Interests/Interests/Job"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Profession, Company"
+valign = 2
+autowrap = true
+
+[node name="Education" type="HBoxContainer" parent="Interests/Interests"]
+margin_top = 36.0
+margin_right = 451.0
+margin_bottom = 68.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="Interests/Interests/Education"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Interests/Interests/Education/C"]
+texture = ExtResource( 11 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Education" type="Label" parent="Interests/Interests/Education"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Study"
+valign = 2
+autowrap = true
+
+[node name="Distance" type="HBoxContainer" parent="Interests/Interests"]
+margin_top = 72.0
+margin_right = 451.0
+margin_bottom = 104.0
+custom_constants/separation = 10
+
+[node name="C" type="Control" parent="Interests/Interests/Distance"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Interests/Interests/Distance/C"]
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="Distance" type="Label" parent="Interests/Interests/Distance"]
+margin_left = 38.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Distance"
+valign = 2
+autowrap = true
+
+[node name="Likes" type="PanelContainer" parent="."]
+margin_top = 197.0
+margin_right = 451.0
+margin_bottom = 229.0
+
+[node name="HC" type="HBoxContainer" parent="Likes"]
+margin_right = 451.0
+margin_bottom = 32.0
+
+[node name="Control" type="Control" parent="Likes/HC"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Likes/HC/Control"]
+texture = ExtResource( 27 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="LikesText" type="Label" parent="Likes/HC"]
+margin_left = 32.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Likes"
+autowrap = true
+
+[node name="Dislikes" type="PanelContainer" parent="."]
+margin_top = 235.0
+margin_right = 451.0
+margin_bottom = 267.0
+size_flags_stretch_ratio = 0.3
+
+[node name="HC" type="HBoxContainer" parent="Dislikes"]
+margin_right = 451.0
+margin_bottom = 32.0
+
+[node name="Control" type="Control" parent="Dislikes/HC"]
+margin_right = 28.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 28, 28 )
+
+[node name="Sprite" type="Sprite" parent="Dislikes/HC/Control"]
+texture = ExtResource( 33 )
+centered = false
+offset = Vector2( 4, 4 )
+
+[node name="DislikesText" type="Label" parent="Dislikes/HC"]
+margin_left = 32.0
+margin_right = 451.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "  Disikes"
+autowrap = true
+
+[node name="HBC" type="HBoxContainer" parent="."]
+margin_top = 273.0
+margin_right = 451.0
+margin_bottom = 333.0
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 6
+
+[node name="Height" type="PanelContainer" parent="HBC"]
+margin_right = 222.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Height" type="HBoxContainer" parent="HBC/Height"]
+margin_right = 222.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="CC" type="CenterContainer" parent="HBC/Height/Height"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+
+[node name="Sprite" type="Sprite" parent="HBC/Height/Height/CC"]
+texture = ExtResource( 28 )
+centered = false
+offset = Vector2( 2, 6 )
+
+[node name="Label" type="Label" parent="HBC/Height/Height"]
+margin_left = 32.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Height"
+
+[node name="Weight" type="PanelContainer" parent="HBC"]
+margin_left = 228.0
+margin_right = 451.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Weight" type="HBoxContainer" parent="HBC/Weight"]
+margin_right = 223.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="CC2" type="CenterContainer" parent="HBC/Weight/Weight"]
+margin_right = 40.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 40, 0 )
+
+[node name="Sprite" type="Sprite" parent="HBC/Weight/Weight/CC2"]
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( 8, 6 )
+
+[node name="Label" type="Label" parent="HBC/Weight/Weight"]
+margin_left = 44.0
+margin_top = 14.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
+text = "Weight"

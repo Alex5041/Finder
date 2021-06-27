@@ -2,25 +2,25 @@ class_name Penalty
 extends Node
 var request
 var f = {}
-var comp = {"ageComp":0,"distanceComp":0,
-"heightComp":0,"weightComp":0}
-var heightUnits = "cm"
-var weightUnits = "kg"
-var distanceUnits = "m"
+var comp = {"ageComp": 0, "distanceComp": 0, "heightComp": 0, "weightComp": 0}
+var height_units = "cm"
+var weight_units = "kg"
+var distance_units = "m"
 var likes = []
 var dislikes = []
 var height
 var weight
 var distance
-var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
-var text:String
+var rnd: RandomNumberGenerator = RandomNumberGenerator.new()
+var text: String
+
 
 func _ready():
 	text = ""
 	rnd.randomize()
 
 
-func addPenalty(p:Person):
+func add_penalty(p: Person):
 	if p.type > -1:
 		match p.type:
 			0:
@@ -51,8 +51,8 @@ func addPenalty(p:Person):
 		text = "profile doesn't match any request"
 
 
-func checkCoincidence(arr, elem):
+func check_coincidence(arr, elem):
 	for j in arr.size():
 		if arr[j] == elem:
-			return checkCoincidence(arr, (elem + 1) % 8)
+			return check_coincidence(arr, (elem + 1) % 8)
 	return elem

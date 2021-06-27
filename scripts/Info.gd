@@ -1,12 +1,12 @@
 extends Node
 
 var arcade:bool = true
-var rightAction = 0
-var gameOver:bool = false
+var right_action = 0
+var game_over:bool = false
 var loaded:bool = false
 var image
 var record:int = 0
-var prevRoundScore:int = 0
+var prev_round_score:int = 0
 
 const upgrades = [#{"text":" always right", "image":"res://resources/titleImages/keepoldrequests.png", "num":0},
 {"text":"keep old requests",
@@ -22,21 +22,21 @@ const upgrades = [#{"text":" always right", "image":"res://resources/titleImages
 {"text":"double time bonuses and penalties next round",
 "image":"res://resources/powerups/doubleTime.png","num":6}]
 
-const upgCost = [5, 5, 10, 10, 5, 5, 10]
+const upg_cost = [5, 5, 10, 10, 5, 5, 10]
 
-const namesMale = ["William", "John", "Thomas", "George", "James", "Henry",
+const names_male = ["William", "John", "Thomas", "George", "James", "Henry",
  "Charles", "Joseph", "Robert", "Edward", "Richard", "Samuel", "Alfred",
  "Frederick", "David", "Arthur", "Walter", "Edwin", "Benjamin", "Francis",
  "Albert", "Daniel", "Isaac", "Peter", "Harry", "Stephen", "Edmund", "Frank",
  "Tom", "Michael", "Matthew", "Herbert", "Abraham", "Alexander"]
-const namesFemale = ["Mary", "Elizabeth", "Sarah", "Ann", "Jane", "Emma",
+const names_female = ["Mary", "Elizabeth", "Sarah", "Ann", "Jane", "Emma",
  "Eliza", "Ellen", "Margaret", "Hannah", "Emily", "Martha", "Alice",
  "Harriet", "Maria", "Louisa", "Fanny", "Charlotte", "Caroline",
  "Catherine", "Frances", "Isabella", "Anne", "Lucy", "Amelia",
  "Susan", "Esther", "Rebecca", "Susannah", "Eleanor", "Matilda",
  "Clara", "Agnes", "Julia"]
 
-const educationPlace = ["School", "College", "University"]
+const education_place = ["School", "College", "University"]
 
 #@ - one or "__ and __"
 const likes = ["I like @",
@@ -168,12 +168,12 @@ const cities = ["Moscow",
 "Rome",
 "Vienna"]
 
-func save(p:Person, r):
-	eraseGame()
+func save(p:Person, _r):
+	erase_game()
 	var game = File.new()
 	game.open("user://arcade.save" if arcade else "user://zen.save", File.WRITE)
 	var data = {"f":p.f,"face":p.face,"likes":p.likes,"dislikes":p.dislikes,
-	"fit":p.fit}
+	"type":p.type}
 	game.store_line(to_json(data))
 	#for i in r:
 		#data = {"f":i.f,}
@@ -181,19 +181,19 @@ func save(p:Person, r):
 	game.close()
 	pass
 
-func canLoad():
+func can_load():
 	var game = File.new()
 	if !game.file_exists("user://arcade.save" if arcade else "user://zen.save"):
 		return null
 	else:
 		 return 1
 
-func eraseGame():
+func erase_game():
 	var dir = Directory.new()
 	if dir.file_exists("user://arcade.save" if arcade else "user://zen.save"):
 		dir.remove("user://arcade.save" if arcade else "user://zen.save")
 
-func loadGame():
+func load_game():
 	var game = File.new()
 	if !game.file_exists("user://arcade.save" if arcade else "user://zen.save"):
 		return null

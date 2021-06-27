@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=2]
+[gd_scene load_steps=184 format=2]
 
 [ext_resource path="res://resources/redImages/heartBig.png" type="Texture" id=1]
 [ext_resource path="res://resources/images/mouths.png" type="Texture" id=2]
@@ -680,7 +680,16 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Game" type="Node"]
+[sub_resource type="StyleBoxFlat" id=125]
+bg_color = Color( 0.952941, 0.956863, 0.878431, 0.552941 )
+border_width_bottom = 10
+border_color = Color( 0.584314, 0.560784, 0.639216, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="Arcade" type="Node"]
 script = ExtResource( 53 )
 
 [node name="VC" type="VBoxContainer" parent="."]
@@ -1402,7 +1411,7 @@ __meta__ = {
 }
 
 [node name="Info" type="PanelContainer" parent="VC/Buttons"]
-margin_right = 112.0
+margin_right = 150.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1410,7 +1419,7 @@ __meta__ = {
 }
 
 [node name="infoMode" type="Button" parent="VC/Buttons/Info"]
-margin_right = 112.0
+margin_right = 150.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 50, 50 )
 custom_styles/hover = SubResource( 120 )
@@ -1422,30 +1431,9 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Buttons/Info/infoMode"]
 frames = ExtResource( 11 )
 
-[node name="Report" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 112.0
-margin_right = 225.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="reportMode" type="Button" parent="VC/Buttons/Report"]
-margin_right = 113.0
-margin_bottom = 60.0
-custom_styles/hover = SubResource( 120 )
-custom_styles/pressed = SubResource( 120 )
-custom_styles/normal = SubResource( 120 )
-action_mode = 0
-flat = true
-
-[node name="Sprite" type="Sprite" parent="VC/Buttons/Report/reportMode"]
-texture = ExtResource( 37 )
-
 [node name="Request" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 225.0
-margin_right = 338.0
+margin_left = 150.0
+margin_right = 300.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1453,7 +1441,7 @@ __meta__ = {
 }
 
 [node name="requestMode" type="Button" parent="VC/Buttons/Request"]
-margin_right = 113.0
+margin_right = 150.0
 margin_bottom = 60.0
 custom_styles/hover = SubResource( 120 )
 custom_styles/pressed = SubResource( 121 )
@@ -1465,7 +1453,7 @@ flat = true
 texture = ExtResource( 33 )
 
 [node name="Profile" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 338.0
+margin_left = 300.0
 margin_right = 451.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
@@ -1474,7 +1462,7 @@ __meta__ = {
 }
 
 [node name="profileMode" type="Button" parent="VC/Buttons/Profile"]
-margin_right = 113.0
+margin_right = 151.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1613,7 +1601,7 @@ margin_bottom = 73.0
 custom_fonts/font = ExtResource( 55 )
 text = "0/0"
 
-[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+[node name="PanelStart" type="PanelContainer" parent="Overlay"]
 visible = false
 margin_left = 28.0
 margin_top = 500.0
@@ -1624,16 +1612,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelStart"]
 margin_right = 427.0
 margin_bottom = 112.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelStart/CenterContainer"]
 margin_top = 22.0
 margin_right = 427.0
 margin_bottom = 90.0
 
-[node name="Big" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+[node name="Big" type="Label" parent="Overlay/PanelStart/CenterContainer/VBoxContainer"]
 margin_right = 427.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 57 )
@@ -1644,13 +1632,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Small" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+[node name="Small" type="Label" parent="Overlay/PanelStart/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 427.0
 margin_bottom = 68.0
 custom_fonts/font = ExtResource( 58 )
 custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
 text = "or press this to start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelToUpgrades" type="PanelContainer" parent="Overlay"]
+visible = false
+margin_left = 28.0
+margin_top = 500.0
+margin_right = 455.0
+margin_bottom = 622.0
+custom_styles/panel = SubResource( 124 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelToUpgrades"]
+margin_right = 427.0
+margin_bottom = 112.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelToUpgrades/CenterContainer"]
+margin_left = 79.0
+margin_top = 22.0
+margin_right = 348.0
+margin_bottom = 90.0
+
+[node name="Big" type="Label" parent="Overlay/PanelToUpgrades/CenterContainer/VBoxContainer"]
+margin_right = 427.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 57 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "Time out!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Small" type="Label" parent="Overlay/PanelToUpgrades/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 427.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 58 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "press this to proceed to powerups"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelGameOver" type="PanelContainer" parent="Overlay"]
+visible = false
+margin_left = 28.0
+margin_top = 500.0
+margin_right = 455.0
+margin_bottom = 622.0
+custom_styles/panel = SubResource( 125 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelGameOver"]
+margin_right = 427.0
+margin_bottom = 112.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelGameOver/CenterContainer"]
+margin_left = 107.0
+margin_top = 22.0
+margin_right = 319.0
+margin_bottom = 90.0
+
+[node name="Big" type="Label" parent="Overlay/PanelGameOver/CenterContainer/VBoxContainer"]
+margin_right = 427.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 57 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "Game Over!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Small" type="Label" parent="Overlay/PanelGameOver/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 427.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 58 )
+custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
+text = "press this to proceed"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1671,9 +1747,13 @@ __meta__ = {
 [connection signal="pressed" from="VC/Upgrades/GC/VB2/Upg1" to="." method="_on_Upg1_pressed"]
 [connection signal="pressed" from="VC/Upgrades/GC/VB3/Upg2" to="." method="_on_Upg2_pressed"]
 [connection signal="pressed" from="VC/Upgrades/GC/VB4/UpgNothing" to="." method="_on_UpgNothing_pressed"]
-[connection signal="pressed" from="VC/Buttons/Info/infoMode" to="." method="_on_Penalty_pressed"]
-[connection signal="pressed" from="VC/Buttons/Request/requestMode" to="." method="_on_Request_pressed" binds= [ true ]]
-[connection signal="pressed" from="VC/Buttons/Profile/profileMode" to="." method="_on_Return_pressed" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Info/infoMode" to="." method="_on_Errors_Made" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Request/requestMode" to="." method="_on_Request" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Profile/profileMode" to="." method="_on_Profile" binds= [ true ]]
 [connection signal="pressed" from="Overlay/Top/ToMenu" to="." method="_on_Pause_pressed"]
-[connection signal="gui_input" from="Overlay/PanelContainer" to="." method="_on_TimeOutOrGameOver"]
-[connection signal="gui_input" from="Overlay/PanelContainer/CenterContainer" to="." method="_on_TimeOutOrGameOver"]
+[connection signal="gui_input" from="Overlay/PanelStart" to="." method="_on_PanelStart_pressed"]
+[connection signal="gui_input" from="Overlay/PanelStart/CenterContainer" to="." method="_on_PanelStart_pressed"]
+[connection signal="gui_input" from="Overlay/PanelToUpgrades" to="." method="_on_PanelToUpgrades_pressed"]
+[connection signal="gui_input" from="Overlay/PanelToUpgrades/CenterContainer" to="." method="_on_PanelToUpgrades_pressed"]
+[connection signal="gui_input" from="Overlay/PanelGameOver" to="." method="on_PanelGameOver_pressed"]
+[connection signal="gui_input" from="Overlay/PanelGameOver/CenterContainer" to="." method="on_PanelGameOver_pressed"]

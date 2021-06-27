@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=2]
+[gd_scene load_steps=178 format=2]
 
 [ext_resource path="res://resources/redImages/heartBig.png" type="Texture" id=1]
 [ext_resource path="res://resources/images/mouths.png" type="Texture" id=2]
@@ -8,19 +8,15 @@
 [ext_resource path="res://resources/images/eyes.png" type="Texture" id=6]
 [ext_resource path="res://resources/images/gender.png" type="Texture" id=7]
 [ext_resource path="res://resources/images/hair.png" type="Texture" id=8]
-[ext_resource path="res://resources/images/pause.png" type="Texture" id=9]
 [ext_resource path="res://resources/mainButtons/menu.png" type="Texture" id=10]
 [ext_resource path="res://resources/mainButtons/infobutton.tres" type="SpriteFrames" id=11]
 [ext_resource path="res://resources/redImages/profileRed.png" type="Texture" id=12]
 [ext_resource path="res://resources/sounds/right2.wav" type="AudioStream" id=13]
-[ext_resource path="res://resources/powerups/lessRequests.png" type="Texture" id=14]
 [ext_resource path="res://resources/sounds/tap.wav" type="AudioStream" id=15]
 [ext_resource path="res://resources/smallIcons/book.png" type="Texture" id=16]
-[ext_resource path="res://resources/powerups/additionalTime.png" type="Texture" id=17]
 [ext_resource path="res://resources/face/hair.png" type="Texture" id=18]
 [ext_resource path="res://resources/face/glasses.png" type="Texture" id=19]
 [ext_resource path="res://resources/smallIcons/heart.png" type="Texture" id=20]
-[ext_resource path="res://resources/powerups/keepOldRequests.png" type="Texture" id=21]
 [ext_resource path="res://resources/face/mouths.png" type="Texture" id=22]
 [ext_resource path="res://resources/images/heightButton.png" type="Texture" id=23]
 [ext_resource path="res://resources/images/interest.png" type="Texture" id=24]
@@ -36,7 +32,7 @@
 [ext_resource path="res://resources/images/bookButton.png" type="Texture" id=34]
 [ext_resource path="res://resources/face/noses.png" type="Texture" id=35]
 [ext_resource path="res://resources/smallIcons/location.png" type="Texture" id=36]
-[ext_resource path="res://resources/mainButtons/report.png" type="Texture" id=37]
+[ext_resource path="res://Profile.tscn" type="PackedScene" id=37]
 [ext_resource path="res://resources/redImages/previous.png" type="Texture" id=38]
 [ext_resource path="res://resources/images/suitcaseButton.png" type="Texture" id=39]
 [ext_resource path="res://resources/images/locationButton.png" type="Texture" id=40]
@@ -49,7 +45,6 @@
 [ext_resource path="res://resources/images/tagButton.png" type="Texture" id=47]
 [ext_resource path="res://resources/titleImages/arcade.png" type="Texture" id=48]
 [ext_resource path="res://resources/images/weightButton.png" type="Texture" id=49]
-[ext_resource path="res://resources/titleImages/nothing.png" type="Texture" id=50]
 [ext_resource path="res://resources/sounds/timeisup.wav" type="AudioStream" id=51]
 [ext_resource path="res://resources/smallIcons/brokenheart.png" type="Texture" id=52]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=53]
@@ -641,22 +636,22 @@ border_color = Color( 0.905882, 0.67451, 0.690196, 1 )
 
 [sub_resource type="AtlasTexture" id=117]
 atlas = ExtResource( 7 )
-region = Rect2( 62, 0, 62, 62 )
+region = Rect2( 0, 0, 62, 62 )
 
 [sub_resource type="AtlasTexture" id=118]
 atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 62, 62 )
+region = Rect2( 62, 0, 62, 62 )
 
 [sub_resource type="SpriteFrames" id=119]
 animations = [ {
 "frames": [ SubResource( 117 ) ],
 "loop": false,
-"name": "female",
+"name": "male",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 118 ) ],
 "loop": false,
-"name": "male",
+"name": "female",
 "speed": 5.0
 } ]
 
@@ -694,10 +689,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Profile" type="VBoxContainer" parent="VC"]
+[node name="Profile" parent="VC" instance=ExtResource( 37 )]
+margin_bottom = 335.0
+
+[node name="ProfilePrev" type="VBoxContainer" parent="VC"]
 visible = false
+margin_top = 332.0
 margin_right = 451.0
-margin_bottom = 333.0
+margin_bottom = 660.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 54 )
@@ -707,46 +706,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FaceButtons" type="HBoxContainer" parent="VC/Profile"]
-margin_top = 5.0
+[node name="FaceButtons" type="HBoxContainer" parent="VC/ProfilePrev"]
 margin_right = 451.0
-margin_bottom = 5.0
 
-[node name="Face" type="Node2D" parent="VC/Profile/FaceButtons"]
+[node name="Face" type="Node2D" parent="VC/ProfilePrev/FaceButtons"]
 position = Vector2( 72, -280 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Background" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Background" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 frames = SubResource( 9 )
 
-[node name="Eyes" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Eyes" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 position = Vector2( 89.8917, 67.4238 )
 z_index = 1
 frames = SubResource( 34 )
 
-[node name="Nose" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Nose" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 position = Vector2( 92.3934, 86.9018 )
 z_index = 1
 frames = SubResource( 59 )
 
-[node name="Mouth" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Mouth" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 position = Vector2( 95.9672, 101.361 )
 z_index = 1
 frames = SubResource( 84 )
 
-[node name="Hair" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Hair" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 position = Vector2( 96.799, 69.6622 )
 z_index = 1
 frames = SubResource( 105 )
 
-[node name="Glasses" type="AnimatedSprite" parent="VC/Profile/FaceButtons/Face"]
+[node name="Glasses" type="AnimatedSprite" parent="VC/ProfilePrev/FaceButtons/Face"]
 position = Vector2( 87.2916, 72.5843 )
 z_index = 2
 frames = SubResource( 114 )
 
-[node name="CC" type="CenterContainer" parent="VC/Profile/FaceButtons"]
+[node name="CC" type="CenterContainer" parent="VC/ProfilePrev/FaceButtons"]
 visible = false
 margin_right = 451.0
 margin_bottom = 300.0
@@ -754,7 +751,7 @@ rect_min_size = Vector2( 0, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GC" type="GridContainer" parent="VC/Profile/FaceButtons/CC"]
+[node name="GC" type="GridContainer" parent="VC/ProfilePrev/FaceButtons/CC"]
 margin_left = 75.0
 margin_top = 86.0
 margin_right = 375.0
@@ -763,14 +760,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
 
-[node name="Face" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Face" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_right = 72.0
 margin_bottom = 62.0
 action_mode = 0
 icon = ExtResource( 28 )
 flat = true
 
-[node name="Suitcase" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Suitcase" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 76.0
 margin_right = 148.0
 margin_bottom = 62.0
@@ -778,7 +775,7 @@ action_mode = 0
 icon = ExtResource( 39 )
 flat = true
 
-[node name="Book" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Book" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 152.0
 margin_right = 224.0
 margin_bottom = 62.0
@@ -786,7 +783,7 @@ action_mode = 0
 icon = ExtResource( 34 )
 flat = true
 
-[node name="Location" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Location" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 228.0
 margin_right = 300.0
 margin_bottom = 62.0
@@ -794,7 +791,7 @@ action_mode = 0
 icon = ExtResource( 40 )
 flat = true
 
-[node name="Tag" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Tag" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_top = 66.0
 margin_right = 72.0
 margin_bottom = 128.0
@@ -802,7 +799,7 @@ action_mode = 0
 icon = ExtResource( 47 )
 flat = true
 
-[node name="Heart" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Heart" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 76.0
 margin_top = 66.0
 margin_right = 148.0
@@ -811,7 +808,7 @@ action_mode = 0
 icon = ExtResource( 24 )
 flat = true
 
-[node name="Height" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Height" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 152.0
 margin_top = 66.0
 margin_right = 224.0
@@ -820,7 +817,7 @@ action_mode = 0
 icon = ExtResource( 23 )
 flat = true
 
-[node name="Weight" type="Button" parent="VC/Profile/FaceButtons/CC/GC"]
+[node name="Weight" type="Button" parent="VC/ProfilePrev/FaceButtons/CC/GC"]
 margin_left = 228.0
 margin_top = 66.0
 margin_right = 300.0
@@ -829,21 +826,21 @@ action_mode = 0
 icon = ExtResource( 49 )
 flat = true
 
-[node name="Buttons" type="VBoxContainer" parent="VC/Profile/FaceButtons"]
+[node name="Buttons" type="VBoxContainer" parent="VC/ProfilePrev/FaceButtons"]
 visible = false
 margin_right = 72.0
 margin_bottom = 182.0
 custom_constants/separation = -2
 alignment = 1
 
-[node name="Penalty" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
+[node name="Penalty" type="Button" parent="VC/ProfilePrev/FaceButtons/Buttons"]
 margin_right = 72.0
 margin_bottom = 62.0
 action_mode = 0
 icon = SubResource( 115 )
 flat = true
 
-[node name="Request" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
+[node name="Request" type="Button" parent="VC/ProfilePrev/FaceButtons/Buttons"]
 margin_top = 60.0
 margin_right = 72.0
 margin_bottom = 122.0
@@ -851,29 +848,21 @@ action_mode = 0
 icon = ExtResource( 33 )
 flat = true
 
-[node name="Report" type="Button" parent="VC/Profile/FaceButtons/Buttons"]
-margin_top = 120.0
-margin_right = 72.0
-margin_bottom = 182.0
-action_mode = 0
-icon = ExtResource( 37 )
-flat = true
-
-[node name="InfoPanel" type="PanelContainer" parent="VC/Profile"]
+[node name="InfoPanel" type="PanelContainer" parent="VC/ProfilePrev"]
 visible = false
 margin_top = 6.0
 margin_right = 451.0
 margin_bottom = 50.0
 custom_styles/panel = SubResource( 116 )
 
-[node name="HBC" type="HBoxContainer" parent="VC/Profile/InfoPanel"]
+[node name="HBC" type="HBoxContainer" parent="VC/ProfilePrev/InfoPanel"]
 margin_left = 16.0
 margin_right = 435.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="ErrorText" type="Label" parent="VC/Profile/InfoPanel/HBC"]
+[node name="ErrorText" type="Label" parent="VC/ProfilePrev/InfoPanel/HBC"]
 margin_right = 229.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
@@ -883,7 +872,7 @@ custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "Name, age"
 autowrap = true
 
-[node name="C" type="Control" parent="VC/Profile/InfoPanel/HBC"]
+[node name="C" type="Control" parent="VC/ProfilePrev/InfoPanel/HBC"]
 visible = false
 margin_left = 376.0
 margin_right = 446.0
@@ -891,7 +880,7 @@ margin_bottom = 514.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 0
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Profile/InfoPanel/HBC/C"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/ProfilePrev/InfoPanel/HBC/C"]
 visible = false
 position = Vector2( -4, 0 )
 frames = SubResource( 119 )
@@ -899,7 +888,7 @@ animation = "male"
 centered = false
 offset = Vector2( 0, 4 )
 
-[node name="Number" type="Label" parent="VC/Profile/InfoPanel/HBC"]
+[node name="Number" type="Label" parent="VC/ProfilePrev/InfoPanel/HBC"]
 margin_left = 233.0
 margin_right = 419.0
 margin_bottom = 44.0
@@ -909,16 +898,16 @@ custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "Name, age"
 align = 2
 
-[node name="NameAgeGender" type="PanelContainer" parent="VC/Profile"]
-margin_top = 11.0
+[node name="NameAgeGender" type="PanelContainer" parent="VC/ProfilePrev"]
+margin_top = 6.0
 margin_right = 451.0
-margin_bottom = 81.0
+margin_bottom = 76.0
 
-[node name="HBC" type="HBoxContainer" parent="VC/Profile/NameAgeGender"]
+[node name="HBC" type="HBoxContainer" parent="VC/ProfilePrev/NameAgeGender"]
 margin_right = 451.0
 margin_bottom = 70.0
 
-[node name="NameAge" type="Label" parent="VC/Profile/NameAgeGender/HBC"]
+[node name="NameAge" type="Label" parent="VC/ProfilePrev/NameAgeGender/HBC"]
 margin_right = 377.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
@@ -929,14 +918,14 @@ text = "  Name, age"
 valign = 1
 autowrap = true
 
-[node name="C" type="Control" parent="VC/Profile/NameAgeGender/HBC"]
+[node name="C" type="Control" parent="VC/ProfilePrev/NameAgeGender/HBC"]
 margin_left = 381.0
 margin_right = 451.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 0
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Profile/NameAgeGender/HBC/C"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VC/ProfilePrev/NameAgeGender/HBC/C"]
 visible = false
 position = Vector2( -4, 0 )
 frames = SubResource( 119 )
@@ -944,32 +933,32 @@ animation = "male"
 centered = false
 offset = Vector2( 0, 4 )
 
-[node name="Interests" type="PanelContainer" parent="VC/Profile"]
-margin_top = 87.0
+[node name="Interests" type="PanelContainer" parent="VC/ProfilePrev"]
+margin_top = 82.0
 margin_right = 451.0
-margin_bottom = 191.0
+margin_bottom = 186.0
 
-[node name="Interests" type="VBoxContainer" parent="VC/Profile/Interests"]
+[node name="Interests" type="VBoxContainer" parent="VC/ProfilePrev/Interests"]
 margin_right = 451.0
 margin_bottom = 104.0
 custom_constants/separation = 4
 
-[node name="Job" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+[node name="Job" type="HBoxContainer" parent="VC/ProfilePrev/Interests/Interests"]
 margin_right = 451.0
 margin_bottom = 32.0
 custom_constants/separation = 10
 
-[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Job"]
+[node name="C" type="Control" parent="VC/ProfilePrev/Interests/Interests/Job"]
 margin_right = 28.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 28, 28 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Job/C"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/Interests/Interests/Job/C"]
 texture = ExtResource( 43 )
 centered = false
 offset = Vector2( 4, 4 )
 
-[node name="Job" type="Label" parent="VC/Profile/Interests/Interests/Job"]
+[node name="Job" type="Label" parent="VC/ProfilePrev/Interests/Interests/Job"]
 margin_left = 38.0
 margin_right = 451.0
 margin_bottom = 32.0
@@ -981,23 +970,23 @@ text = "Profession, Company"
 valign = 2
 autowrap = true
 
-[node name="Education" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+[node name="Education" type="HBoxContainer" parent="VC/ProfilePrev/Interests/Interests"]
 margin_top = 36.0
 margin_right = 451.0
 margin_bottom = 68.0
 custom_constants/separation = 10
 
-[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Education"]
+[node name="C" type="Control" parent="VC/ProfilePrev/Interests/Interests/Education"]
 margin_right = 28.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 28, 28 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Education/C"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/Interests/Interests/Education/C"]
 texture = ExtResource( 16 )
 centered = false
 offset = Vector2( 4, 4 )
 
-[node name="Education" type="Label" parent="VC/Profile/Interests/Interests/Education"]
+[node name="Education" type="Label" parent="VC/ProfilePrev/Interests/Interests/Education"]
 margin_left = 38.0
 margin_right = 451.0
 margin_bottom = 32.0
@@ -1009,23 +998,23 @@ text = "Study"
 valign = 2
 autowrap = true
 
-[node name="Distance" type="HBoxContainer" parent="VC/Profile/Interests/Interests"]
+[node name="Distance" type="HBoxContainer" parent="VC/ProfilePrev/Interests/Interests"]
 margin_top = 72.0
 margin_right = 451.0
 margin_bottom = 104.0
 custom_constants/separation = 10
 
-[node name="C" type="Control" parent="VC/Profile/Interests/Interests/Distance"]
+[node name="C" type="Control" parent="VC/ProfilePrev/Interests/Interests/Distance"]
 margin_right = 28.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 28, 28 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/Interests/Interests/Distance/C"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/Interests/Interests/Distance/C"]
 texture = ExtResource( 36 )
 centered = false
 offset = Vector2( 4, 4 )
 
-[node name="Distance" type="Label" parent="VC/Profile/Interests/Interests/Distance"]
+[node name="Distance" type="Label" parent="VC/ProfilePrev/Interests/Interests/Distance"]
 margin_left = 38.0
 margin_right = 451.0
 margin_bottom = 32.0
@@ -1037,26 +1026,26 @@ text = "Distance"
 valign = 2
 autowrap = true
 
-[node name="Likes" type="PanelContainer" parent="VC/Profile"]
-margin_top = 197.0
+[node name="Likes" type="PanelContainer" parent="VC/ProfilePrev"]
+margin_top = 192.0
 margin_right = 451.0
-margin_bottom = 229.0
+margin_bottom = 224.0
 
-[node name="HC" type="HBoxContainer" parent="VC/Profile/Likes"]
+[node name="HC" type="HBoxContainer" parent="VC/ProfilePrev/Likes"]
 margin_right = 451.0
 margin_bottom = 32.0
 
-[node name="Control" type="Control" parent="VC/Profile/Likes/HC"]
+[node name="Control" type="Control" parent="VC/ProfilePrev/Likes/HC"]
 margin_right = 28.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 28, 28 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/Likes/HC/Control"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/Likes/HC/Control"]
 texture = ExtResource( 20 )
 centered = false
 offset = Vector2( 4, 4 )
 
-[node name="LikesText" type="Label" parent="VC/Profile/Likes/HC"]
+[node name="LikesText" type="Label" parent="VC/ProfilePrev/Likes/HC"]
 margin_left = 32.0
 margin_right = 451.0
 margin_bottom = 32.0
@@ -1067,27 +1056,27 @@ custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "  Likes"
 autowrap = true
 
-[node name="Dislikes" type="PanelContainer" parent="VC/Profile"]
-margin_top = 235.0
+[node name="Dislikes" type="PanelContainer" parent="VC/ProfilePrev"]
+margin_top = 230.0
 margin_right = 451.0
-margin_bottom = 267.0
+margin_bottom = 262.0
 size_flags_stretch_ratio = 0.3
 
-[node name="HC" type="HBoxContainer" parent="VC/Profile/Dislikes"]
+[node name="HC" type="HBoxContainer" parent="VC/ProfilePrev/Dislikes"]
 margin_right = 451.0
 margin_bottom = 32.0
 
-[node name="Control" type="Control" parent="VC/Profile/Dislikes/HC"]
+[node name="Control" type="Control" parent="VC/ProfilePrev/Dislikes/HC"]
 margin_right = 28.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 28, 28 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/Dislikes/HC/Control"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/Dislikes/HC/Control"]
 texture = ExtResource( 52 )
 centered = false
 offset = Vector2( 4, 4 )
 
-[node name="DislikesText" type="Label" parent="VC/Profile/Dislikes/HC"]
+[node name="DislikesText" type="Label" parent="VC/ProfilePrev/Dislikes/HC"]
 margin_left = 32.0
 margin_right = 451.0
 margin_bottom = 32.0
@@ -1098,34 +1087,34 @@ custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "  Disikes"
 autowrap = true
 
-[node name="HBC" type="HBoxContainer" parent="VC/Profile"]
-margin_top = 273.0
+[node name="HBC" type="HBoxContainer" parent="VC/ProfilePrev"]
+margin_top = 268.0
 margin_right = 451.0
-margin_bottom = 333.0
+margin_bottom = 328.0
 rect_min_size = Vector2( 0, 60 )
 custom_constants/separation = 6
 
-[node name="Height" type="PanelContainer" parent="VC/Profile/HBC"]
+[node name="Height" type="PanelContainer" parent="VC/ProfilePrev/HBC"]
 margin_right = 222.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
-[node name="Height" type="HBoxContainer" parent="VC/Profile/HBC/Height"]
+[node name="Height" type="HBoxContainer" parent="VC/ProfilePrev/HBC/Height"]
 margin_right = 222.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
-[node name="CC" type="CenterContainer" parent="VC/Profile/HBC/Height/Height"]
+[node name="CC" type="CenterContainer" parent="VC/ProfilePrev/HBC/Height/Height"]
 margin_right = 28.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 28, 0 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/HBC/Height/Height/CC"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/HBC/Height/Height/CC"]
 texture = ExtResource( 26 )
 centered = false
 offset = Vector2( 2, 6 )
 
-[node name="Label" type="Label" parent="VC/Profile/HBC/Height/Height"]
+[node name="Label" type="Label" parent="VC/ProfilePrev/HBC/Height/Height"]
 margin_left = 32.0
 margin_top = 14.0
 margin_right = 120.0
@@ -1134,28 +1123,28 @@ custom_fonts/font = ExtResource( 56 )
 custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "Height"
 
-[node name="Weight" type="PanelContainer" parent="VC/Profile/HBC"]
+[node name="Weight" type="PanelContainer" parent="VC/ProfilePrev/HBC"]
 margin_left = 228.0
 margin_right = 451.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
-[node name="Weight" type="HBoxContainer" parent="VC/Profile/HBC/Weight"]
+[node name="Weight" type="HBoxContainer" parent="VC/ProfilePrev/HBC/Weight"]
 margin_right = 223.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
-[node name="CC2" type="CenterContainer" parent="VC/Profile/HBC/Weight/Weight"]
+[node name="CC2" type="CenterContainer" parent="VC/ProfilePrev/HBC/Weight/Weight"]
 margin_right = 40.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 40, 0 )
 
-[node name="Sprite" type="Sprite" parent="VC/Profile/HBC/Weight/Weight/CC2"]
+[node name="Sprite" type="Sprite" parent="VC/ProfilePrev/HBC/Weight/Weight/CC2"]
 texture = ExtResource( 42 )
 centered = false
 offset = Vector2( 8, 6 )
 
-[node name="Label" type="Label" parent="VC/Profile/HBC/Weight/Weight"]
+[node name="Label" type="Label" parent="VC/ProfilePrev/HBC/Weight/Weight"]
 margin_left = 44.0
 margin_top = 14.0
 margin_right = 142.0
@@ -1165,8 +1154,9 @@ custom_colors/font_color = Color( 0.0980392, 0.0627451, 0.156863, 1 )
 text = "Weight"
 
 [node name="Request" type="HBoxContainer" parent="VC"]
+margin_top = 339.0
 margin_right = 451.0
-margin_bottom = 671.0
+margin_bottom = 675.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 54 )
@@ -1176,7 +1166,7 @@ __meta__ = {
 
 [node name="SC" type="MarginContainer" parent="VC/Request"]
 margin_right = 451.0
-margin_bottom = 671.0
+margin_bottom = 336.0
 size_flags_horizontal = 3
 theme = ExtResource( 54 )
 custom_constants/margin_top = 60
@@ -1184,7 +1174,7 @@ custom_constants/margin_top = 60
 [node name="List" type="VBoxContainer" parent="VC/Request/SC"]
 margin_top = 60.0
 margin_right = 451.0
-margin_bottom = 671.0
+margin_bottom = 336.0
 size_flags_horizontal = 3
 custom_constants/separation = 6
 
@@ -1213,181 +1203,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Upgrades" type="VBoxContainer" parent="VC"]
-visible = false
-margin_top = 332.0
-margin_right = 451.0
-margin_bottom = 764.0
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HB" type="HBoxContainer" parent="VC/Upgrades"]
-margin_right = 451.0
-margin_bottom = 62.0
-
-[node name="ReturnFromUpgrades" type="Button" parent="VC/Upgrades/HB"]
-margin_right = 72.0
-margin_bottom = 62.0
-action_mode = 0
-icon = ExtResource( 9 )
-flat = true
-
-[node name="GC" type="GridContainer" parent="VC/Upgrades"]
-margin_top = 66.0
-margin_right = 451.0
-margin_bottom = 358.0
-size_flags_vertical = 3
-columns = 2
-
-[node name="VB" type="VBoxContainer" parent="VC/Upgrades/GC"]
-margin_right = 223.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Upg0" type="Button" parent="VC/Upgrades/GC/VB"]
-margin_right = 223.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 57 )
-icon = ExtResource( 14 )
-flat = true
-expand_icon = true
-
-[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB"]
-margin_top = 54.0
-margin_right = 223.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 57 )
-custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
-text = "Less requests"
-fit_content_height = true
-
-[node name="VB2" type="VBoxContainer" parent="VC/Upgrades/GC"]
-margin_left = 227.0
-margin_right = 450.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Upg1" type="Button" parent="VC/Upgrades/GC/VB2"]
-margin_right = 223.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 57 )
-icon = ExtResource( 17 )
-flat = true
-expand_icon = true
-
-[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB2"]
-margin_top = 54.0
-margin_right = 223.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 57 )
-custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
-text = "Additional time"
-fit_content_height = true
-
-[node name="VB3" type="VBoxContainer" parent="VC/Upgrades/GC"]
-margin_top = 148.0
-margin_right = 223.0
-margin_bottom = 292.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Upg2" type="Button" parent="VC/Upgrades/GC/VB3"]
-margin_right = 223.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 57 )
-icon = ExtResource( 21 )
-flat = true
-expand_icon = true
-
-[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB3"]
-margin_top = 54.0
-margin_right = 223.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 57 )
-custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
-text = "Keep old requests"
-fit_content_height = true
-
-[node name="VB4" type="VBoxContainer" parent="VC/Upgrades/GC"]
-margin_left = 227.0
-margin_top = 148.0
-margin_right = 450.0
-margin_bottom = 292.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="UpgNothing" type="Button" parent="VC/Upgrades/GC/VB4"]
-margin_right = 223.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 57 )
-icon = ExtResource( 50 )
-flat = true
-expand_icon = true
-
-[node name="Text" type="RichTextLabel" parent="VC/Upgrades/GC/VB4"]
-margin_top = 74.0
-margin_right = 223.0
-margin_bottom = 144.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 57 )
-custom_colors/default_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/selection_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_selected = Color( 0.960784, 0.956863, 0.921569, 1 )
-custom_colors/font_color_shadow = Color( 0.960784, 0.956863, 0.921569, 1 )
-text = "Nothing"
-fit_content_height = true
-
-[node name="Label" type="Label" parent="VC/Upgrades"]
-margin_top = 362.0
-margin_right = 451.0
-margin_bottom = 432.0
-rect_min_size = Vector2( 0, 70 )
-custom_fonts/font = ExtResource( 57 )
-custom_colors/font_color = Color( 0.960784, 0.956863, 0.921569, 1 )
-
-[node name="TimeLeft" type="Control" parent="VC"]
-margin_top = 675.0
-margin_right = 451.0
-margin_bottom = 675.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Line2D" type="Line2D" parent="VC/TimeLeft"]
-position = Vector2( 32.1022, 41.4428 )
-points = PoolVector2Array( -32, -41.5, -32, -41.5 )
-width = 8.0
-default_color = Color( 0.976471, 0.980392, 0.941176, 1 )
-begin_cap_mode = 2
-
 [node name="Buttons" type="HBoxContainer" parent="VC"]
 margin_top = 679.0
 margin_right = 451.0
@@ -1402,7 +1217,7 @@ __meta__ = {
 }
 
 [node name="Info" type="PanelContainer" parent="VC/Buttons"]
-margin_right = 112.0
+margin_right = 150.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1410,7 +1225,7 @@ __meta__ = {
 }
 
 [node name="infoMode" type="Button" parent="VC/Buttons/Info"]
-margin_right = 112.0
+margin_right = 150.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 50, 50 )
 custom_styles/hover = SubResource( 120 )
@@ -1422,30 +1237,9 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="VC/Buttons/Info/infoMode"]
 frames = ExtResource( 11 )
 
-[node name="Report" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 112.0
-margin_right = 225.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="reportMode" type="Button" parent="VC/Buttons/Report"]
-margin_right = 113.0
-margin_bottom = 60.0
-custom_styles/hover = SubResource( 120 )
-custom_styles/pressed = SubResource( 120 )
-custom_styles/normal = SubResource( 120 )
-action_mode = 0
-flat = true
-
-[node name="Sprite" type="Sprite" parent="VC/Buttons/Report/reportMode"]
-texture = ExtResource( 37 )
-
 [node name="Request" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 225.0
-margin_right = 338.0
+margin_left = 150.0
+margin_right = 300.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1453,7 +1247,7 @@ __meta__ = {
 }
 
 [node name="requestMode" type="Button" parent="VC/Buttons/Request"]
-margin_right = 113.0
+margin_right = 150.0
 margin_bottom = 60.0
 custom_styles/hover = SubResource( 120 )
 custom_styles/pressed = SubResource( 121 )
@@ -1465,7 +1259,7 @@ flat = true
 texture = ExtResource( 33 )
 
 [node name="Profile" type="PanelContainer" parent="VC/Buttons"]
-margin_left = 338.0
+margin_left = 300.0
 margin_right = 451.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
@@ -1474,7 +1268,7 @@ __meta__ = {
 }
 
 [node name="profileMode" type="Button" parent="VC/Buttons/Profile"]
-margin_right = 113.0
+margin_right = 151.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1613,7 +1407,7 @@ margin_bottom = 73.0
 custom_fonts/font = ExtResource( 55 )
 text = "0/0"
 
-[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+[node name="PanelGameOver" type="PanelContainer" parent="Overlay"]
 visible = false
 margin_left = 28.0
 margin_top = 500.0
@@ -1624,56 +1418,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/PanelGameOver"]
 margin_right = 427.0
 margin_bottom = 112.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelGameOver/CenterContainer"]
+margin_left = 107.0
 margin_top = 22.0
-margin_right = 427.0
+margin_right = 319.0
 margin_bottom = 90.0
 
-[node name="Big" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+[node name="Big" type="Label" parent="Overlay/PanelGameOver/CenterContainer/VBoxContainer"]
 margin_right = 427.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 57 )
 custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
-text = "You have 5 s before start"
+text = "Game Over!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Small" type="Label" parent="Overlay/PanelContainer/CenterContainer/VBoxContainer"]
+[node name="Small" type="Label" parent="Overlay/PanelGameOver/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 427.0
 margin_bottom = 68.0
 custom_fonts/font = ExtResource( 58 )
 custom_colors/font_color = Color( 0.0784314, 0.0392157, 0.168627, 1 )
-text = "or press this to start"
+text = "press this to submit score"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Face" to="." method="_on_Face_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Suitcase" to="." method="_on_Suitcase_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Book" to="." method="_on_Book_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Location" to="." method="_on_Location_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Tag" to="." method="_on_Tag_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Heart" to="." method="_on_Heart_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Height" to="." method="_on_Height_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/CC/GC/Weight" to="." method="_on_Weight_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Penalty" to="." method="_on_Penalty_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Request" to="." method="_on_Request_pressed"]
-[connection signal="pressed" from="VC/Profile/FaceButtons/Buttons/Report" to="." method="_on_Report_pressed"]
-[connection signal="pressed" from="VC/Upgrades/GC/VB/Upg0" to="." method="_on_Upg0_pressed"]
-[connection signal="pressed" from="VC/Upgrades/GC/VB2/Upg1" to="." method="_on_Upg1_pressed"]
-[connection signal="pressed" from="VC/Upgrades/GC/VB3/Upg2" to="." method="_on_Upg2_pressed"]
-[connection signal="pressed" from="VC/Upgrades/GC/VB4/UpgNothing" to="." method="_on_UpgNothing_pressed"]
-[connection signal="pressed" from="VC/Buttons/Info/infoMode" to="." method="_on_Penalty_pressed"]
-[connection signal="pressed" from="VC/Buttons/Request/requestMode" to="." method="_on_Request_pressed" binds= [ true ]]
-[connection signal="pressed" from="VC/Buttons/Profile/profileMode" to="." method="_on_Return_pressed" binds= [ true ]]
-[connection signal="pressed" from="Overlay/Top/ToMenu" to="." method="_on_Pause_pressed"]
-[connection signal="gui_input" from="Overlay/PanelContainer" to="." method="_on_TimeOutOrGameOver"]
-[connection signal="gui_input" from="Overlay/PanelContainer/CenterContainer" to="." method="_on_TimeOutOrGameOver"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Face" to="." method="_on_Face_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Suitcase" to="." method="_on_Suitcase_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Book" to="." method="_on_Book_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Location" to="." method="_on_Location_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Tag" to="." method="_on_Tag_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Heart" to="." method="_on_Heart_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Height" to="." method="_on_Height_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/CC/GC/Weight" to="." method="_on_Weight_pressed"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/Buttons/Penalty" to="." method="_on_Errors_Made"]
+[connection signal="pressed" from="VC/ProfilePrev/FaceButtons/Buttons/Request" to="." method="_on_Request" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Info/infoMode" to="." method="_on_Errors_Made" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Request/requestMode" to="." method="_on_Request" binds= [ true ]]
+[connection signal="pressed" from="VC/Buttons/Profile/profileMode" to="." method="_on_Profile" binds= [ true ]]
+[connection signal="pressed" from="Overlay/Top/ToMenu" to="." method="_on_Pause"]
+[connection signal="gui_input" from="Overlay/PanelGameOver" to="." method="on_PanelGameOver_pressed"]
+[connection signal="gui_input" from="Overlay/PanelGameOver/CenterContainer" to="." method="on_PanelGameOver_pressed"]

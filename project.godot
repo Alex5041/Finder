@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Request.gd"
 }, {
-"base": "Node",
+"base": "Game",
 "class": "Zen",
 "language": "GDScript",
 "path": "res://scripts/Zen.gd"

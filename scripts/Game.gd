@@ -1,16 +1,16 @@
 class_name Game
 extends Node
 onready var p = load("Person.tscn")
-onready var nameAge = get_node(
+onready var name_age = get_node(
 	"VC/Profile/NameAgeGender/HBC/NameAge")
 onready var job = get_node("VC/Profile/Interests/Interests/Job/Job")
 onready var education = get_node(
 	"VC/Profile/Interests/Interests/Education/Education")
 onready var distance = get_node(
 	"VC/Profile/Interests/Interests/Distance/Distance")
-onready var likesText = get_node(
+onready var likes_text = get_node(
 	"VC/Profile/Likes/HC/LikesText")
-onready var dislikesText = get_node(
+onready var dislikes_text = get_node(
 	"VC/Profile/Dislikes/HC/DislikesText")
 onready var height = get_node(
 	"VC/Profile/HBC/Height/Height/Label")
@@ -20,28 +20,29 @@ onready var gender:AnimatedSprite = get_node(
 	"VC/Profile/NameAgeGender/HBC/C/AnimatedSprite")
 onready var  scroll_container = get_node("VC/Penalty/VSB")
 onready var  scroll_container2 = get_node("VC/Request/SC")
+
 var requests = []
 var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
 var person
-var wrongPersonArray = []
-var penaltyIter:int = 0
+var wrong_person_array = []
 
-onready var startTimer = Timer.new()
+# index of current wrong person.
+var penalty_iter:int = 0
 var pol:PoolVector2Array = PoolVector2Array([0])
 var chosen = []
-var actionType = actionTypeEnum.CURRENT_PROFILE
-var timeStart = 5
-var gameOverPressed = false
-var countdown = 5
-var roundNum = 0
+var game_state = game_state_enum.REQUEST
 
+var game_over_panel_pressed = false
+var countdown = 5
+onready var visible_panel = $Like
 var total = 0
 var correct = 0
 
-enum actionTypeEnum{
+enum game_state_enum{
 	CURRENT_PROFILE, # In-Profile
 	MADE_ERRORS, # In-Wrong-Profiles
-	OUT
+	REQUEST,
+	OUT # round / game over
 }
 
 
@@ -52,161 +53,39 @@ func _ready():
 		$VC/Profile.rect_size.x/2,$VC/Profile.rect_size.y*2)
 	$VC/Request.rect_pivot_offset = Vector2(
 		$VC/Request.rect_size.x/2,$VC/Request.rect_size.y)
-	falseVisible()
-	configureButtonSizes()
-	placeFace()
-	roundStart()
-
-func roundStart():
-	roundNum += 1
-	$Overlay/PanelContainer.rect_position = Vector2(28, 500)
-	$Overlay/PanelContainer/CenterContainer/VBoxContainer/Big.text = (
-		"You have " + str(countdown) + " s before start")
-	
-	$VC/Upgrades.visible = false
-	$VC/Buttons.visible = true
-	
-
-	if requests.size() > 0:
-		requests[0].queue_free()
-		requests.clear()
-	addRequest(rnd.randi_range(1, 3))
-	createPerson(Info.loadGame() if Info.loaded else null)
-
-	if !Info.arcade:
-		$Overlay/Top/Score.text = str(Info.rightAction) + "/" + str(Info.record)
-	else:
-		$Overlay/Top/Score.text = str(Info.rightAction + Info.prevRoundScore
-		) + "/" + str((roundNum + 1) * 5)
-		$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
-			Info.rightAction < (roundNum+1)*5)  else Color("f3f4e0"))
+	false_visible()
+	configure_button_sizes()
+	place_face()
+	add_request(rnd.randi_range(1, 3))
+	create_person()
 
 
-func createChosen():
-	chosen.clear()
-	var upgs = []
-	for i in Info.upgrades:
-		upgs.append(i)
-	for i in 3:
-		var ind = rnd.randi_range(0, upgs.size() - 1)
-		chosen.append(upgs[ind])
-		upgs.remove(ind)
-
-	$VC/Upgrades/GC/VB/Upg0.icon = load(chosen[0].get("image"))
-	$VC/Upgrades/GC/VB/Text.text = chosen[0].get("text")
-	$VC/Upgrades/GC/VB2/Upg1.icon = load(chosen[1].get("image"))
-	$VC/Upgrades/GC/VB2/Text.text = chosen[1].get("text")
-	$VC/Upgrades/GC/VB3/Upg2.icon = load(chosen[2].get("image"))
-	$VC/Upgrades/GC/VB3/Text.text = chosen[2].get("text")
-
-
-func infoModeUpdate():
-	displayPerson(wrongPersonArray[penaltyIter].get("person"))
+func info_mode_update():
+	display_person(wrong_person_array[penalty_iter].get("person"))
+	$VC/Profile/InfoPanel.visible = true
 	$VC/Profile/InfoPanel/HBC/ErrorText.text = (
-		wrongPersonArray[penaltyIter].get("action"))
+		wrong_person_array[penalty_iter].get("action"))
 	$VC/Profile/InfoPanel/HBC/Number.text = str(
-	penaltyIter + 1)+"/"+str(wrongPersonArray.size()) + "  "
+	penalty_iter + 1) + "/" + str(wrong_person_array.size()) + "  "
 
-func infoModeLeave():
-	actionType = actionTypeEnum.CURRENT_PROFILE
+
+func info_mode_leave():
+	game_state = game_state_enum.CURRENT_PROFILE
+	$VC/Profile/InfoPanel.visible = false
 	$VC/Profile.theme = load("res://resources/theme.tres")
-
-func _input(event):
-	if event is InputEventScreenTouch:
-		if $VC/Profile.visible:
-			# Like
-			if $VC/Profile.rect_position.x > 35 and abs(
-				$VC/Profile.rect_position.y) <= 35:
-				swipe(-2)
-			# Dislike
-			elif $VC/Profile.rect_position.x < -35 and abs(
-				$VC/Profile.rect_position.y) <= 35:
-				swipe(-1)
-			# Report mode
-			elif $VC/Profile.rect_position.y < -35 and abs(
-				$VC/Profile.rect_position.x) <= 35:
-				swipe(0)
-			# Request mode
-			elif $VC/Profile.rect_position.y > 35 and abs(
-				$VC/Profile.rect_position.x) <= 35:
-				_on_Request(false)
-			$VC/Profile.rect_rotation = 0
-			falseVisible()
-			$Profile.visible = true
-			$VC/Profile.rect_position = Vector2()
-		elif $VC/Request.visible:
-			if $VC/Request.rect_position.y > 35 and abs(
-				$VC/Request.rect_position.x) <= 35:
-					_on_Profile(false)
-			$VC/Request.rect_rotation = 0
-			$Profile.visible = false
-			$VC/Request.rect_position = Vector2()
-
-	# No action happening
-	if event is InputEventScreenDrag:
-		if $VC/Profile.visible == true:
-			$VC/Profile.rect_rotation += (event.relative).x / 10
-			$VC/Profile.rect_position += event.relative / 3
-			# Like
-			if $VC/Profile.rect_position.x > 35 and abs(
-				$VC/Profile.rect_position.y) <= 35:
-				if actionType == actionTypeEnum.CURRENT_PROFILE:
-					$Like.visible = true
-				else:
-					$Previous.visible = true
-			# Dislike
-			elif $VC/Profile.rect_position.x < -35 and abs(
-				$VC/Profile.rect_position.y) <= 35:
-				if actionType == actionTypeEnum.CURRENT_PROFILE:
-					$Dislike.visible = true
-				else:
-					$Next.visible = true
-			# Report
-			elif $VC/Profile.rect_position.y < -35 and abs(
-				$VC/Profile.rect_position.x) <= 35 and (
-					actionType == actionTypeEnum.CURRENT_PROFILE):
-				$Report.visible = true
-			# Profile
-			elif $VC/Profile.rect_position.y > 35 and abs(
-				$VC/Profile.rect_position.x) <= 35 and (
-					actionType == actionTypeEnum.CURRENT_PROFILE):
-				$Request.visible = true
-
-			# Not necessary probably.
-			#else:
-			#	falseVisible()
-			#	$Profile.visible = true
-		elif $VC/Request.visible == true:
-			$VC/Request.rect_rotation += (event.relative).x / 10
-			$VC/Request.rect_position += event.relative / 3
-			if $VC/Request.rect_position.y > 35 and abs(
-				$VC/Request.rect_position.x) <= 35:
-					$Profile.visible = true
-			else:
-				$Profile.visible = false
-		elif $VC/Penalty.visible == true:
-			scroll_container.scroll_vertical -= event.relative.y
+	# that is for showing not wrong profiles in profile tab
+	display_person(person)
 
 
-	# Delete in release.
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_RIGHT:
-#			for i in get_tree().get_root().get_children():
-#				print(i.get_class())
-#				for j in i.get_children():
-#					print("    " + j.get_class())
-			person.queue_free()
-			createPerson()
-
-func rightAction():
+func right_action():
 	correct += 1
 	$Right.play()
-	Info.rightAction += 1
-	$Overlay/Top/Score.text = str(Info.rightAction) + "/" + str(Info.record)
-	person.queue_free()
+	Info.right_action += 1
+	$Overlay/Top/Score.text = str(Info.right_action)\
+		+ "/" + str(Info.record)
 
 
-func wrongAction(var type):
+func wrong_action(var type) -> void:
 	var errorText:String
 	match type:
 		0:
@@ -216,10 +95,16 @@ func wrongAction(var type):
 		2:
 			errorText = "reported"
 	$Wrong.play()
-	gameOverOrPenalty(errorText)
+	add_penalty(errorText)
 
 
-func falseVisible():
+func change_visible(new_visible):
+	visible_panel.visible = false
+	new_visible.visible = true
+	visible_panel = new_visible
+
+
+func false_visible():
 	$Like.visible = false
 	$Dislike.visible = false
 	$Report.visible = false
@@ -232,46 +117,45 @@ func falseVisible():
 # 1 dislike
 # 2 report
 func swipe(var type):
-	if actionType == actionTypeEnum.MADE_ERRORS:
+	if game_state == game_state_enum.MADE_ERRORS:
 		match type:
 			-2:
-				penaltyIter -= 1
+				penalty_iter -= 1
 			-1:
-				penaltyIter += 1
-		if penaltyIter == wrongPersonArray.size():
-			penaltyIter = 0
-		elif penaltyIter == -1:
-			penaltyIter = wrongPersonArray.size() - 1
-		infoModeUpdate()
-		return
-	elif !Info.gameOver:
+				penalty_iter += 1
+		if penalty_iter == wrong_person_array.size():
+			penalty_iter = 0
+		elif penalty_iter == -1:
+			penalty_iter = wrong_person_array.size() - 1
+		info_mode_update()
+	elif !Info.game_over:
 		var typeNow = person.type if person.type < 0 else 0
-		if typeNow != person.type:
-			wrongAction(type + 2)
+		if typeNow != type:
+			wrong_action(type + 2)
 		else:
-			rightAction()
-		createPerson()
+			right_action()
+		create_person()
 
 
-func displayPerson(pers:Person):
+func display_person(pers:Person):
 	pers.writed()
-	nameAge.text = "  " + pers.f.get("nam") + ", " + str(pers.f.get("age"))
+	name_age.text = "  " + pers.f.get("nam") + ", " + str(pers.f.get("age"))
 	gender.play("male" if pers.f.get("gender") else "female")
 	job.text = pers.job
 	education.text = pers.education
 	distance.text = str(pers.distance
-	) + " " + pers.distanceUnits
+	) + " " + pers.distance_units
 
 	# likes and dislikes split
-	var stringArr = pers.interestsText().rsplit(
+	var stringArr = pers.interests_text().rsplit(
 		'\n\n')
 	if stringArr.size() > 0:
-		likesText.text = stringArr[0]
+		likes_text.text = stringArr[0]
 	if stringArr.size() > 1:
-		dislikesText.text = stringArr[1]
+		dislikes_text.text = stringArr[1]
 
-	height.text = str(pers.height) + " " + pers.heightUnits
-	weight.text = str(pers.weight) + " " + pers.weightUnits
+	height.text = str(pers.height) + " " + pers.height_units
+	weight.text = str(pers.weight) + " " + pers.weight_units
 	$VC/Profile/FaceButtons/Face/Eyes.frame = pers.face[0]
 	$VC/Profile/FaceButtons/Face/Nose.frame = pers.face[1]
 	$VC/Profile/FaceButtons/Face/Mouth.frame = pers.face[2]
@@ -283,45 +167,47 @@ func displayPerson(pers:Person):
 	else:
 		$VC/Profile/FaceButtons/Face/Glasses.visible = false
 
-func createPerson(data = null):
+
+func create_person(data = null):
 	total += 1
 	person = p.instance()
 	add_child(person)
-	print(data)
 	if data != null:
+		print(data)
 		person.f = data.get("f")
 		person.face = data.get("face")
 		person.likes = data.get("likes")
 		person.dislikes = data.get("dislikes")
-		person.fit = data.get("fit")
+		person.type = data.get("type")
 	else:
-		var brokenOrFit = rnd.randi_range(0, 4)
-		if brokenOrFit == 4:
-			person.makeBroken()
-		elif brokenOrFit <= 1:
-			person.makeFit(requests[0])
-	displayPerson(person)
-	if !person.fit :
-		person.fit = person.check(requests[0])
-	print(person.fit)
-	print(person.broken)
+		var brokenOrFit = rnd.randi_range(-2, 0)
+		if brokenOrFit == 0:
+			person.make_broken()
+		elif brokenOrFit == -1:
+			person.make_fit(requests[0])
+		else:
+			person.type = person.check(requests[0])
+	display_person(person)
+	print(person.type)
 
 
-func addRequest(var num):
-	var r = load("Message.tscn").instance()
+func add_request(var num):
+	var r = load("Request.tscn").instance()
 	$VC/Request/SC/List.add_child(r)
-	r.addRequest(num)
+	r.add_request(num)
 	r.writed()
 	r.get_node("MarginContainer/RichTextLabel").parse_bbcode(r.text)
 	requests.append(r)
 
 
-func addPenalty(actionTypeText:String):
+func add_penalty(actionTypeText:String):
 	$VC/Buttons/Info/infoMode/AnimatedSprite.play()
 	var r = load("Penalty.tscn").instance()
 	$VC/Penalty/VSB/List.add_child(r)
-	r.addPenalty(person)
-	wrongPersonArray.append({"person":person,"action":actionTypeText+(
+	r.add_penalty(person)
+	print("added fault")
+	# adding person to info panel if made a mistake
+	wrong_person_array.append({"person":person,"action":actionTypeText+(
 		", "+r.text)})
 	#r.get_node("MC/RichTextLabel").parse_bbcode(r.text)
 #	if(tex != null):
@@ -330,18 +216,99 @@ func addPenalty(actionTypeText:String):
 #	).icon.current_frame = 1
 
 
+func _input(event):
+	if event is InputEventScreenTouch\
+		and game_state != game_state_enum.OUT:
+
+		if game_state != game_state_enum.REQUEST:
+			# Like
+			if $VC/Profile.rect_position.x > 35 and abs(
+				$VC/Profile.rect_position.y) <= 35:
+				swipe(-1)
+			# Dislike
+			elif $VC/Profile.rect_position.x < -35 and abs(
+				$VC/Profile.rect_position.y) <= 35:
+				swipe(-2)
+			# Report mode
+			elif $VC/Profile.rect_position.y < -35 and abs(
+				$VC/Profile.rect_position.x) <= 35:
+				swipe(0)
+			# Request mode
+			elif $VC/Profile.rect_position.y > 35 and abs(
+				$VC/Profile.rect_position.x) <= 35:
+				_on_Request(false)
+			$VC/Profile.rect_rotation = 0
+			$VC/Profile.rect_position = Vector2()
+		else:
+			if $VC/Request.rect_position.y > 35 and abs(
+				$VC/Request.rect_position.x) <= 35:
+				_on_Profile(false)
+			$VC/Request.rect_rotation = 0
+			$VC/Request.rect_position = Vector2()
+		visible_panel.visible = false
+
+	# No action happening
+	if event is InputEventScreenDrag and game_state != game_state_enum.OUT:
+		if game_state != game_state_enum.REQUEST:
+			$VC/Profile.rect_rotation += (event.relative).x / 10
+			$VC/Profile.rect_position += event.relative / 3
+			# Like
+			if $VC/Profile.rect_position.x > 35 and abs(
+				$VC/Profile.rect_position.y) <= 35:
+				if game_state == game_state_enum.CURRENT_PROFILE:
+					change_visible($Like)
+				else:
+					change_visible($Previous)
+			# Dislike
+			elif $VC/Profile.rect_position.x < -35 and abs(
+				$VC/Profile.rect_position.y) <= 35:
+				if game_state == game_state_enum.CURRENT_PROFILE:
+					change_visible($Dislike)
+				else:
+					change_visible($Next)
+			# Report
+			elif $VC/Profile.rect_position.y < -35 and abs(
+				$VC/Profile.rect_position.x) <= 35 and (
+				game_state == game_state_enum.CURRENT_PROFILE):
+				change_visible($Report)
+			# Profile
+			elif $VC/Profile.rect_position.y > 35 and abs(
+				$VC/Profile.rect_position.x) <= 35 and (
+				game_state == game_state_enum.CURRENT_PROFILE):
+				change_visible($Request)
+			else:
+				visible_panel.visible = false
+		else:
+			$VC/Request.rect_rotation += (event.relative).x / 10
+			$VC/Request.rect_position += event.relative / 3
+			if $VC/Request.rect_position.y > 35 and abs(
+				$VC/Request.rect_position.x) <= 35:
+				change_visible($Profile)
+			else:
+				visible_panel.visible = false
+		#elif $VC/Penalty.visible == true:
+		#	scroll_container.scroll_vertical -= event.relative.y
+
+	# Delete in release.
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_RIGHT:
+			person.queue_free()
+			create_person()
+
+
 func _on_Pause():
 	tap()
 	Info.save(person, requests)
-	Info.gameOver = false
+	Info.game_over = false
 	get_tree().change_scene("res://Title.tscn")
 
 
 func _on_Profile(flag):
-	infoModeLeave()
+	visible_panel.visible = false
+	game_state = game_state_enum.CURRENT_PROFILE
+	info_mode_leave()
 	if flag:
 		tap()
-	$VC/Buttons/Report/reportMode.flat = true
 	$VC/Buttons/Request/requestMode.flat = true
 	$VC/Buttons/Profile/profileMode.flat = false
 	$VC/Buttons/Info/infoMode.flat = true
@@ -353,11 +320,12 @@ func _on_Profile(flag):
 
 
 func _on_Request(flag):
+	visible_panel.visible = false
+	game_state = game_state_enum.REQUEST
 	if flag:
 		tap()
-	if countdown < 0:
-		$Overlay/PanelContainer.visible = false
-	$VC/Buttons/Report/reportMode.flat = true
+#	if countdown < 0:
+#		$Overlay/PanelContainer.visible = false
 	$VC/Buttons/Request/requestMode.flat = false
 	$VC/Buttons/Profile/profileMode.flat = true
 	$VC/Buttons/Info/infoMode.flat = true
@@ -366,15 +334,14 @@ func _on_Request(flag):
 
 # Info button
 func _on_Errors_Made(flag):
-	if flag:
-		 tap()
-	if wrongPersonArray.size() > 0:
-		infoModeUpdate()
-		actionType = actionTypeEnum.MADE_ERRORS
-		$Overlay/PanelContainer.visible = false
+	if wrong_person_array.size() > 0:
+		if flag:
+			tap()
+		info_mode_update()
+		game_state = game_state_enum.MADE_ERRORS
+#		$Overlay/PanelContainer.visible = false
 		$VC/Profile.theme = load("res://resources/reportTheme.tres")
 		tap()
-		$VC/Buttons/Report/reportMode.flat = true
 		$VC/Buttons/Request/requestMode.flat = true
 		$VC/Buttons/Profile/profileMode.flat = true
 		$VC/Buttons/Info/infoMode.flat = false
@@ -382,25 +349,11 @@ func _on_Errors_Made(flag):
 		get_node("VC/Request").visible = false
 		get_node("VC/Profile").visible = true
 		get_node("VC/Buttons/Info/infoMode/AnimatedSprite").stop()
-		get_node("VC/Buttons/Info/infoMode/AnimatedSprite"
-		).frame = 0
+		get_node("VC/Buttons/Info/infoMode/AnimatedSprite").frame = 0
 
 
-func gameOverOrPenalty(actionTypeText:String):
-	if !Info.arcade:
-		Info.gameOver = true
-		Info.eraseGame()
-		$Overlay/PanelContainer.visible = true
-		$Overlay/PanelContainer/CenterContainer/VBoxContainer/Big.text = (
-			"Game Over!")
-		$Overlay/PanelContainer/CenterContainer/VBoxContainer/Small.text = (
-			"press this to proceed")
-#		get_tree().change_scene("res://Title.tscn")
-#	else:
-	addPenalty(actionTypeText)
 
-
-func toTitle():
+func to_title():
 	print("Title")
 
 
@@ -411,11 +364,8 @@ func tap():
 
 
 # panel buttons changing sizes.
-func configureButtonSizes():
+func configure_button_sizes():
 	$VC/Buttons/Info/infoMode/AnimatedSprite.position = Vector2(
-		$VC/Buttons/Info.rect_position.x+$VC/Buttons/Info.rect_size.x/2,
-		$VC/Buttons/Info.rect_position.y+$VC/Buttons/Info.rect_size.y/2)
-	$VC/Buttons/Report/reportMode/Sprite.position = Vector2(
 		$VC/Buttons/Info.rect_position.x+$VC/Buttons/Info.rect_size.x/2,
 		$VC/Buttons/Info.rect_position.y+$VC/Buttons/Info.rect_size.y/2)
 	$VC/Buttons/Request/requestMode/Sprite.position = Vector2(
@@ -426,7 +376,7 @@ func configureButtonSizes():
 		$VC/Buttons/Info.rect_position.y+$VC/Buttons/Info.rect_size.y/2)
 
 # placing face features.
-func placeFace():
+func place_face():
 	$VC/Profile/FaceButtons/Face/Background.position = Vector2(
 		$VC/Profile.rect_size.x/2-
 		$VC/Profile/FaceButtons/Face/Background.frames.get_frame(
@@ -458,34 +408,24 @@ func placeFace():
 			"default", 0).get_width()/2+4, 120)
 
 
-func _on_TimeOutOrGameOver(event):
+func on_PanelGameOver_pressed(event):
 	if event is InputEventScreenTouch:
-		if gameOverPressed:
-			gameOverPressed = false
-			$Overlay/PanelContainer.get("custom_styles/panel").border_color = Color("958fa3")
-			$Overlay/PanelContainer.rect_position += Vector2(0, -10)
-			if Info.arcade:
-				Info.rightAction -= (roundNum + 1) * 5
-				$Overlay/Top/Score.text = str(Info.rightAction + Info.prevRoundScore
-					) + "/" + str((roundNum + 1) * 5)
-				$Overlay/Top/Score.add_color_override("font_color", Color("e7acb0") if (
-					Info.rightAction + Info.prevRoundScore < (roundNum+1)*5
-					)  else Color("f3f4e0"))
-				createChosen()
-				$VC/Profile.visible = false
-				$VC/Buttons.visible = false
-				$VC/TimeLeft.visible = false
-				$Overlay/PanelContainer.visible = false
-				$VC/Upgrades.visible = true
-			else:
-				toTitle()
-		elif countdown == -1 or !Info.arcade:
-			tap()
-			gameOverPressed = true
-			#$Overlay/PanelContainer.margin_top = -10
-			$Overlay/PanelContainer.get("custom_styles/panel").border_color = 0
-			$Overlay/PanelContainer.rect_position += Vector2(0, 10)
-		elif countdown > -1:
-			tap()
-			countdown = 0
-			startTimer.stop()
+		print("touch")
+		if game_over_panel_pressed:
+			panel_push(true, get_node("Overlay/PanelGameOver"))
+			get_tree().change_scene("Submit.tscn")
+		else:
+			panel_push(false, get_node("Overlay/PanelGameOver"))
+			
+		game_over_panel_pressed = !game_over_panel_pressed
+	pass # Replace with function body.
+
+func panel_push(press, node):
+	tap()
+	if press:
+		node.get("custom_styles/panel").border_color = Color("958fa3")
+		node.rect_position += Vector2(0, -10)
+	else:
+		#$Overlay/PanelContainer.margin_top = -10
+		node.get("custom_styles/panel").border_color = 0
+		node.rect_position += Vector2(0, 10)

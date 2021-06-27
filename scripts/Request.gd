@@ -4,9 +4,9 @@ var request
 var f = {}
 var comp = {"ageComp":0,"distanceComp":0,
 "heightComp":0,"weightComp":0}
-var heightUnits = "cm"
-var weightUnits = "kg"
-var distanceUnits = "m"
+var height_units = "cm"
+var weight_units = "kg"
+var distance_units = "m"
 var likes = []
 var dislikes = []
 var height
@@ -20,8 +20,8 @@ func _ready():
 	rnd.randomize()
 
 
-func addRequest(var num):
-	request = createPreferences(num)
+func add_request(var num):
+	request = create_preferences(num)
 	#self.get("custom_styles/panel").border_color = Color("7664fe")
 #	self.get("custom_styles/panel").corner_radius_top_right = 20
 #	self.get("custom_styles/panel").corner_radius_bottom_right = 20
@@ -57,7 +57,7 @@ func addRequest(var num):
 				if rnd.randi_range(0, 1) == 0:
 					f["educationType"] = true
 					f["eduType"] = rnd.randi_range(0, 2)
-					f["educationPlace"] = "School" if f.get("eduType") == 0 else (
+					f["education_place"] = "School" if f.get("eduType") == 0 else (
 					"College" if f.get("eduType") == 1 else "University")
 				else:
 					f["educationType"] = false
@@ -94,27 +94,27 @@ func writed():
 		match i:
 			0:
 				if rnd.randi_range(0, 1) == 0:
-					distanceUnits = "km"
+					distance_units = "km"
 					distance = f.get("distance")/1000.0
 				else:
 					distance = f.get("distance")
 				text += "[img]resources/images/location.png[/img] " + (
 					"> " if comp.get("distanceComp") == 1 else (
 					"< " if comp.get("distanceComp") == 2 else "= ")) + str(
-					distance) + " " + distanceUnits + "\n"
+					distance) + " " + distance_units + "\n"
 			1:
 				if rnd.randi()%2 == 0:
-					heightUnits = "m"
+					height_units = "m"
 					height = float(f.get("height")) / 100
 				else:
 					height = f.get("height")
 				text += "[img]resources/images/height.png[/img] " + (
 					"> " if comp.get("heightComp") == 1 else (
 					"< " if comp.get("heightComp") == 2 else "= ")) + str(
-					height) + " " + heightUnits + "\n"
+					height) + " " + height_units + "\n"
 			2:
 				if rnd.randi_range(0, 1) == 0:
-					weightUnits = "q"
+					weight_units = "q"
 					weight = f.get("weight")
 					weight /= 100.0
 				else:
@@ -122,7 +122,7 @@ func writed():
 				text += "[img]resources/images/weight.png[/img] " + (
 					"> " if comp.get("weightComp") == 1 else (
 					"< " if comp.get("weightComp") == 2 else "= ")) + str(
-					weight) + " " + weightUnits + "\n"
+					weight) + " " + weight_units + "\n"
 			3:
 				text += "[img]resources/images/body.png[/img] " + (
 					"> " if comp.get("ageComp") == 1 else (
@@ -138,7 +138,7 @@ func writed():
 			5:
 				if f.get("educationType"):
 					text += "[img]resources/images/book.png[/img] in " + (
-						f.get("educationPlace") + "\n")
+						f.get("education_place") + "\n")
 				else:
 					text += "[img]resources/images/book.png[/img] in " + (
 						f.get("educationTown") + "\n")
@@ -152,19 +152,19 @@ func writed():
 
 
 
-func createPreferences(var num):
+func create_preferences(var num):
 	#rnd.randomize()
 	var arr = []
 	for i in num:
 		rnd.randomize()
 		var newElement = rnd.randi_range(0, 7)
-		newElement = checkCoincidence(arr, newElement)
+		newElement = check_coincidence(arr, newElement)
 		arr.append(newElement)
 	return arr
 
 
-func checkCoincidence(arr, elem):
+func check_coincidence(arr, elem):
 	for j in arr.size():
 		if arr[j] == elem:
-			return checkCoincidence(arr,(elem + 1) % 8)
+			return check_coincidence(arr,(elem + 1) % 8)
 	return elem
